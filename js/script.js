@@ -8961,11 +8961,6 @@ let links_data = [
 				"name":"登录账号",
 				"new_open":false,
 				"link":"/#login"
-			},
-			{
-				"name":"Community",
-				"new_open":true,
-				"link":"https://www.yunzhongzhuan.com/community/"
 			}
 			/*{
 				"name":"注册账号",
@@ -11080,6 +11075,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
