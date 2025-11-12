@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html>
+	<script type="text/javascript">
+	(function() {
+	    // 获取当前完整 URL
+	    var currentURL = window.location.href;
+	
+	    // 检查是否是 yunzhongzhuan.com（不含 www）
+	    if (currentURL.match(/^https?:\/\/yunzhongzhuan\.com(\/|$)/)) {
+	        // 替换成带 www 的 URL
+	        var newURL = currentURL.replace(/^https?:\/\/yunzhongzhuan\.com/, function(match) {
+	            return match.startsWith('https') ? 'https://www.yunzhongzhuan.com' : 'http://www.yunzhongzhuan.com';
+	        });
+	        // 跳转到新 URL
+	        window.location.href = newURL;
+	    }
+	})();
+	</script>
 	<head>
 		<!--<base href=""/>-->
 		<!--script type="text/javascript" src="/js/laji_referer_filter.js"></script-->
@@ -1766,6 +1782,7 @@
 		
 	</body>
 </html>
+
 
 
 
