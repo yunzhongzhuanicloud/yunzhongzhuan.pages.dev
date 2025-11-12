@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter and Compressor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        pre {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            margin-right: 10px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Formatter and Compressor</h1>
+    <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
+    <br>
+    <button onclick="formatJSON()">Format JSON</button>
+    <button onclick="compressJSON()">Compress JSON</button>
+    <button onclick="copyResult()">Copy Result</button>
+    <div id="result"></div>
+
+    <script>
+        function formatJSON() {
+            const input = document.getElementById('jsonInput').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+            try {
+                const json = JSON.parse(input);
+                const formatted = JSON.stringify(json, null, 4);
+                const pre = document.createElement('pre');
+                pre.textContent = formatted;
+                pre.id = 'formattedResult';
+                resultDiv.appendChild(pre);
+            } catch (e) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.textContent = 'Invalid JSON: ' + e.message;
+                resultDiv.appendChild(errorDiv);
+            }
+        }
+
+        function compressJSON() {
+            const input = document.getElementById('jsonInput').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+            try {
+                const json = JSON.parse(input);
+                const compressed = JSON.stringify(json);
+                const pre = document.createElement('pre');
+                pre.textContent = compressed;
+                pre.id = 'compressedResult';
+                resultDiv.appendChild(pre);
+            } catch (e) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error';
+                errorDiv.textContent = 'Invalid JSON: ' + e.message;
+                resultDiv.appendChild(errorDiv);
+            }
+        }
+
+        function copyResult() {
+            const resultDiv = document.getElementById('result');
+            const pre = resultDiv.querySelector('pre');
+            if (pre) {
+                const range = document.createRange();
+                range.selectNode(pre);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                try {
+                    document.execCommand('copy');
+                    // alert('Result copied to clipboard!');
+                    console.log('Result copied to clipboard!');
+                } catch (err) {
+                    // alert('Failed to copy result.');
+                    console.log('Failed to copy result.');
+                }
+                window.getSelection().removeAllRanges();
+            } else {
+                // alert('No result to copy.');
+                console.log('No result to copy.');
+            }
+        }
+    </script>
+</body>
+</html>

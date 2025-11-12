@@ -1,0 +1,86 @@
+# This is a comment
+/downloads/img/*
+  Cache-Control: max-age=31536000
+/img/defaukt_user_profile_picture_1.png
+  Cache-Control: max-age=31536000
+/img/upload_file_full_screen.png
+  Cache-Control: max-age=31536000
+/img/wechat-profile-picture-default.png
+  Cache-Control: max-age=31536000
+/img/qq-profile-picture-default.png
+  Cache-Control: max-age=31536000
+/img/logo.png
+  Cache-Control: max-age=31536000
+/404
+  Cache-Control: max-age=31536000
+/404.html
+  Cache-Control: max-age=31536000
+/img/telecomspeed.png
+  Cache-Control: max-age=31536000
+/img/FreeVIP.png
+  Cache-Control: max-age=31536000
+/img/MiniVIP.png
+  Cache-Control: max-age=31536000
+/img/BigVIP.png
+  Cache-Control: max-age=31536000
+/img/Wallpaper-Logo-2.4.jpg
+  Cache-Control: max-age=31536000
+/img/cloud.png
+  Cache-Control: max-age=31536000
+/img/logo.png
+  Cache-Control: max-age=31536000
+/welcome/img/logo.png
+  Cache-Control: max-age=31536000
+/welcome/img/*.jpg
+  Cache-Control: max-age=31536000
+/welcome/img/*.png
+  Cache-Control: max-age=31536000
+/51la_ip
+  Cache-Control: max-age=31536000
+/js/calc_hash.js
+  Cache-Control: max-age=31536000
+  Access-Control-Allow-Credentials: true
+  Access-Control-Allow-Methods: OPTIONS,GET,POST
+  Access-Control-Allow-Origin: https://www.yunzhongzhuan.com
+/plug-in/font-awesome-4.7.0/css/font-awesome.min.css
+  Cache-Control: max-age=31536000
+/plug-in/sweetalert/sweetalert.min.js
+  Cache-Control: max-age=31536000
+/img/pointer.cur
+  Cache-Control: max-age=31536000
+/img/2022122815120001.jpg
+  Cache-Control: max-age=31536000
+/img/2022122815120002.jpg
+  Cache-Control: max-age=31536000
+/plug-in/font-awesome-4.7.0/fonts/*
+  Cache-Control: max-age=31536000
+/favicon.ico
+  Cache-Control: max-age=31536000
+/welcome/favicon.ico
+  Cache-Control: max-age=31536000
+/downloads/img/*.jpg
+  Cache-Control: max-age=31536000
+/downloads/img/*.png
+  Cache-Control: max-age=31536000
+/downloads/favicon.ico
+  Cache-Control: max-age=31536000
+/downloads/js/sweetalert.min.js
+  Cache-Control: max-age=31536000
+/downloads/plug-in/font-awesome-4.7.0/css/*.css
+  Cache-Control: max-age=31536000
+/downloads/img/blue.cur
+  Cache-Control: max-age=31536000
+/downloads/plug-in/font-awesome-4.7.0/fonts/*
+  Cache-Control: max-age=31536000
+/plug-in/font-awesome-4.7.0/*
+  Cache-Control: max-age=31536000
+  Access-Control-Allow-Credentials: true
+  Access-Control-Allow-Methods: OPTIONS,GET,POST
+  Access-Control-Allow-Origin: https://www.yunzhongzhuan.com
+/*
+  Origin-Agent-Cluster: ?0
+  Cache-Control: no-cache
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors *.yunzhongzhuan.com
+  Strict-Transport-Security: max-age=0; includeSubDomains
+  Speculation-Rules: "/img/logo.png"

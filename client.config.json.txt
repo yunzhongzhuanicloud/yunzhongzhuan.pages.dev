@@ -1,0 +1,9 @@
+{
+	"version":202505310002,
+	"engine":{
+		"link":"https://raw.download.yunzhongzhuan.com/engine.exe"
+	},
+	"script":{
+		"link":"https://raw.download.yunzhongzhuan.com/script.bin"
+	}
+}

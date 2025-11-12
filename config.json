@@ -1,0 +1,269 @@
+{
+
+
+
+
+    "dns": {
+        "servers": [
+            {
+                "tag": "proxy_dns",
+                "address": "udp://8.8.8.8",
+                "detour": "proxy_ip"
+            },
+            {
+                "tag": "local",
+                "address": "udp://119.29.29.29",
+                "detour": "direct"
+            },
+            {
+            "address": "8.8.8.8"
+        },
+        {
+            "address": "223.5.5.5"
+        },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "rules": [
+
+
+
+          {
+            /*
+            "process_name": [
+            "RiotClientServices.exe",
+            "Riot Client.exe",
+            "LeagueClient.exe",
+            "LeagueClientUx.exe",
+            "League of Legends.exe",
+            "vgtray.exe",
+            "vgc.exe",
+            "vgm.exe",
+            "LeagueClientUxRender.exe",
+            "LeagueCrashHandler64.exe",
+            "RiotClientCrashHandler.exe",
+            "log-uploader.exe"
+            ],
+            */
+            "domain":[
+              "riotgames.com",
+              "pvp.net",
+              "riotcdn.net",
+              "leagueoflegends.com",
+              "lolesports.com",
+              "hcaptcha.com" // 登录验证码
+            ],
+            "domain_suffix":[
+              ".riotgames.com",
+              ".pvp.net",
+              ".riotcdn.net",
+              ".leagueoflegends.com",
+              ".lolesports.com",
+              ".hcaptcha.com" // 登录验证码
+            ],
+            "server": "proxy_dns"
+          },
+
+
+
+          {
+              "outbound": "any",
+              "server": "local"
+          }
+
+        ],
+        
+        "strategy": "ipv4_only",
+        "final": "local"
+    },
+
+
+
+    "inbounds": [
+        {
+            "type": "tun",
+            "interface_name": "Monster1753592571",    // parseInt(new Date().getTime()/1000)
+            "address": "172.10.7.0/24",
+            "auto_route": true,
+            "strict_route": false,
+            "sniff": true,
+              "mtu": 1500,
+              "stack": "system"
+        }
+    ],
+    "outbounds": [
+
+
+
+
+
+
+
+      // 连接方式
+        {
+        "type": "vless",
+        "tag": "proxy_ip",
+        "server": "1.168.181.35",
+        "server_port": 42942,
+        "uuid": "03507373-9fed-4261-a30d-2f30df65b30e",
+        "tls": {}, // 这里显示为 false，因为您的图片显示“关闭”。强烈建议开启 TLS。
+
+
+        "transport": {
+          "type": "ws",
+          "path": "/",
+          "headers": {},
+          "max_early_data": 0,
+          "early_data_header_name": ""
+        }
+      },
+      // 连接方式 配置完成
+
+
+
+
+
+
+      {
+        "type": "direct",
+        "tag": "direct"
+      },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        }
+    ],
+    "route": {
+        "rules": [
+
+
+
+
+
+
+
+          
+          {
+            // 英雄联盟 拳头
+            // Riot Game League of Legends
+            /*
+            "process_name": [
+              "RiotClientServices.exe",
+              "Riot Client.exe",
+              "LeagueClient.exe",
+              "LeagueClientUx.exe",
+              "League of Legends.exe",
+              "vgtray.exe",
+              "vgc.exe",
+              "vgm.exe",
+              "LeagueClientUxRender.exe",
+              "LeagueCrashHandler64.exe",
+              "RiotClientCrashHandler.exe",
+              "log-uploader.exe"
+            ],
+            */
+            "domain":[
+              "riotgames.com",
+              "pvp.net",
+              "riotcdn.net",
+              "leagueoflegends.com",
+              "lolesports.com",
+              "hcaptcha.com" // 登录验证码
+            ],
+            "domain_suffix":[
+              ".riotgames.com",
+              ".pvp.net",
+              ".riotcdn.net",
+              ".leagueoflegends.com",
+              ".lolesports.com",
+              ".hcaptcha.com" // 登录验证码
+            ],
+            "ip_cidr": [
+              // AS6507 Riot Games IPv4 Range
+                "43.229.64.0/22",
+              "43.229.65.0/24",
+              "45.7.36.0/22",
+              "45.7.37.0/24",
+              "45.7.38.0/24",
+              "45.7.39.0/24",
+              "45.250.208.0/22",
+              "103.219.128.0/22",
+              "103.240.224.0/22",
+              "104.160.128.0/19",
+              "104.160.156.0/24",
+              "138.0.12.0/23",
+              "138.0.12.0/24",
+              "138.0.14.0/24",
+              "138.0.15.0/24",
+              "151.106.246.0/24",
+              "151.106.247.0/24",
+              "151.106.248.0/24",
+              "151.106.249.0/24",
+              "151.106.250.0/23",
+              "151.106.252.0/24",
+              "151.106.253.0/24",
+              "151.106.254.0/24",
+              "162.249.72.0/21",
+              "162.249.72.0/22",
+              "162.249.72.0/24",
+              "162.249.75.0/24",
+              "162.249.76.0/22",
+              "162.249.79.0/24",
+              "185.40.64.0/22",
+              "185.40.64.0/24",
+              "192.64.168.0/21",
+              "192.64.170.0/24",
+              "192.64.171.0/24",
+              "192.64.173.0/24",
+              "192.207.0.0/24"
+              // AS6507 Riot Games IPv4 Range END
+              // 英雄联盟 拳头 配置完成
+              // Riot Game League of Legends END
+            ],
+            "network": ["tcp", "udp"],"outbound": "proxy_ip"
+          },
+
+
+
+/*
+
+
+
+
+
+sing-box run -c 2n.json
+
+
+
+getDns.py
+
+
+
+*/
+
+
+
+
+
+
+            {
+                "protocol": "dns",
+                "outbound": "dns-out"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "direct"
+    },
+    "log": {
+        "disabled": false,
+        // "level": "info",
+        "output": "sing-box.log",
+        "timestamp": true
+  },
+}

@@ -1,0 +1,12 @@
+[[edge_functions]]
+function = "hello"
+path = "/qq1070892573/www.yunzhongzhuan.com/"
+
+[[redirects]]
+  from = "/download/"
+  to = "https://download.yunzhongzhuan.com"
+  status = 307
+  force = false
+  query = {path = ":path"}
+  conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
+  
