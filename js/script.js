@@ -6624,8 +6624,8 @@ let api_server_url = window.location.protocol + "//cae45776685ba.cname.frontwize
 // let api_server_url = "https://yunzhongzhuan.com.huaweicloud.com.5a7567ec.cdnhwc8.cn";
 // let api_server_url = "https://hcdnw103.c.cdnhwc2.com";
 if(navigator.language.toLowerCase().indexOf('cn')==-1){
-	// api_server_url = window.location.protocol + "//apiyunzhongzhuancom.vercel.app";
-	api_server_url = window.location.protocol + "//api.yunzhongzhuan.com"; // api.yunzhongzhuan.com
+	api_server_url = window.location.protocol + "//apiyunzhongzhuancom.vercel.app";
+	// api_server_url = window.location.protocol + "//api.yunzhongzhuan.com"; // api.yunzhongzhuan.com
 	// api_server_url = window.location.protocol + "//mfm.yunzhongzhuan.com";
 }
 // let api_server_url = "https://ddos-guard-net-apiyunzhongzhuancom.vercel.app";
@@ -6993,8 +6993,8 @@ function show_verify_code(){
 	html_element.innerHTML = '<img class="verify-pass-img" src="'+ verify_img_url + '"/><br/><br/><input placeholder="请输入图片中12位验证文字！" autocomplete="off" class="swal-content__input verify-pass-input">';
 	if( false && navigator.language.toLowerCase().indexOf('cn')==-1){
 		let new_src = html_element.getElementsByClassName('verify-pass-img')[0].src.replace(/verify_code.php/g,'verify_code');
-		// new_src = new_src.replace(api_server_url,'https://apiyunzhongzhuancom.vercel.app');
-		new_src = new_src.replace(api_server_url,window.location.protocol+'//api.yunzhongzhuan.com');//api.yunzhongzhuan.com
+		new_src = new_src.replace(api_server_url,'https://apiyunzhongzhuancom.vercel.app');
+		// new_src = new_src.replace(api_server_url,window.location.protocol+'//api.yunzhongzhuan.com');//api.yunzhongzhuan.com
 		html_element.getElementsByClassName('verify-pass-img')[0].src = new_src;
 	}
 	swal({
@@ -7051,8 +7051,8 @@ function show_verify_code(){
 						}
 					}
 					if(navigator.language.toLowerCase().indexOf('cn')==-1){
-						// xmlhttp.open("GET","https://apiyunzhongzhuancom.vercel.app/php/v4/verify_code?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
-						xmlhttp.open("GET",window.location.protocol+"//api.yunzhongzhuan.com/php/v4/verify_code?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
+						xmlhttp.open("GET","https://apiyunzhongzhuancom.vercel.app/php/v4/verify_code?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
+						// xmlhttp.open("GET",window.location.protocol+"//api.yunzhongzhuan.com/php/v4/verify_code?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
 						// api.yunzhongzhuan.com
 					}else{
 						xmlhttp.open("GET",api_server_url+"/php/v4/verify_code.php?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
@@ -7072,8 +7072,8 @@ function show_verify_code(){
 		let verify_pass_img = verify_pass_img_items[0];
 		verify_pass_img.onclick = function(){
 			if( false && navigator.language.toLowerCase().indexOf('cn')==-1){
-				// this.src = 'https://apiyunzhongzhuancom.vercel.app/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
-				this.src = window.location.protocol+'//api.yunzhongzhuan.com/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
+				this.src = 'https://apiyunzhongzhuancom.vercel.app/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
+				// this.src = window.location.protocol+'//api.yunzhongzhuan.com/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
 				// api.yunzhongzhuan.com
 			}else{
 				// this.src = "https://gimg2.baidu.com/gimg/app=2011&src=" + encodeURIComponent('https://cae45776685ba.cname.frontwize.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime());
@@ -11080,6 +11080,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
