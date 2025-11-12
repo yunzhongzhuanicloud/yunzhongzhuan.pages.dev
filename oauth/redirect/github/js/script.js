@@ -33,7 +33,7 @@ let session_id = get_cookie("PHPSESSID");
 
 function DoLoginFunction(){
 
-	let TheAPIURL = "https://c34a02aaeb0d6.cname.frontwize.com/php/v4/oauth_github";
+	let TheAPIURL = "https://cae45776685ba.cname.frontwize.com/php/v4/oauth_github";
 
 	let xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
@@ -147,3 +147,4 @@ xmlhttp.send("folders_id="+folders_id+"&files_id="+files_id+"&parent_folder_id="
 
 
 */
+
