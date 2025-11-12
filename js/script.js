@@ -10549,8 +10549,8 @@ if(
 	login_input_button_github_login != undefined
 ){
 	login_input_button_github_login.onclick = function(){
-		// window.location.href = "https://github.com/login/oauth/authorize?client_id=Ov23liaKKUcbdbhHtGG3&redirect_uri=https://www." + getTopLevelDomain(window.location.hostname) + "/oauth/redirect/github/";
-		window.location.href = "https://github.com/login/oauth/authorize?client_id=Ov23liaKKUcbdbhHtGG3&redirect_uri=https://www.yunzhongzhuan.com/oauth/redirect/github/";
+		// window.location.href = "https://github.com/login/oauth/authorize?client_id=Ov23lihcLEoFBQxJzm5p&redirect_uri=https://www." + getTopLevelDomain(window.location.hostname) + "/oauth/redirect/github/";
+		window.location.href = "https://github.com/login/oauth/authorize?client_id=Ov23lihcLEoFBQxJzm5p&redirect_uri=https://www.yunzhongzhuan.com/oauth/redirect/github/";
 	}
 }
 
@@ -11080,6 +11080,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
