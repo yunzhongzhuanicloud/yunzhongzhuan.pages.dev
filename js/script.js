@@ -8947,11 +8947,12 @@ let links_data = [
 	{
 		"title":"网站导航",
 		"data":[
+			/*
 			{
 				"name":"网站主页",
 				"new_open":false,
 				"link":"/#sharecenter"
-			},
+			},*/
 			{
 				"name":"我的文件",
 				"new_open":false,
@@ -11085,6 +11086,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
