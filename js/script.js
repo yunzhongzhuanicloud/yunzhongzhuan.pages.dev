@@ -440,10 +440,11 @@ if(window.location.href.indexOf('/download/media/')!=-1){
 
 }
 if(window.location.href.split('#').length<2){
-	// window.location.href="#login";
+	window.location.href="#login"; // 默认显示登录页面
+	/*
 	if(window.location.href.indexOf("#sharecenter")==-1){ // 默认显示社区页面 SHARECENTER
 		window.location.href="#sharecenter";
-	}
+	}*/
 }
 
 function getTopLevelDomain(hostname) {
@@ -11084,6 +11085,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
