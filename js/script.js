@@ -7993,6 +7993,7 @@ let sharefile_content_fileinfo_filename_span = document.getElementById('sharefil
 let sharefile_content_fileinfo_filename_i = document.getElementById('sharefile-content-fileinfo-filename-i');
 let sharefile_content_fileinfo_filesize = document.getElementById('sharefile-content-fileinfo-filesize');
 let sharefile_content_link_item_download_button_19 = document.getElementById('sharefile-content-link-item-download-button-19');
+let sharefile_content_link_item_download_button_99 = document.getElementById('sharefile-content-link-item-download-button-99');
 let sharefile_content_link_item_download_button_20 = document.getElementById('sharefile-content-link-item-download-button-20');
 let sharefile_content_link_item_download_button_21 = document.getElementById('sharefile-content-link-item-download-button-21');
 let sharefile_content_link_item_download_button_22 = document.getElementById('sharefile-content-link-item-download-button-22');
@@ -8107,6 +8108,14 @@ function get_sharefile(id,key){
 					sharefile_content_link_item_download_button_19.style.color="#ff5050";
 					sharefile_content_link_item_download_button_19.style.fontWeight="bold";
 					sharefile_content_link_item_download_button_19.style.borderBottom="2px dashed #ff5050";
+
+				
+					sharefile_content_link_item_download_button_99.href = ResultJSON["ftp"].split('?')[0]+"?download=yunzhongzhuan.com";
+					sharefile_content_link_item_download_button_99.style.color="#ff5050";
+					sharefile_content_link_item_download_button_99.style.fontWeight="bold";
+					sharefile_content_link_item_download_button_99.style.borderBottom="2px dashed #ff5050";
+
+				
 					sharefile_content_link_item_download_button_20.href = "https://a.download.yunzhongzhuan.com" + ResultJSON["url"];
 					sharefile_content_link_item_download_button_20.style.color="#0051c3";
 					sharefile_content_link_item_download_button_20.style.fontWeight="bold";
@@ -11075,6 +11084,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
