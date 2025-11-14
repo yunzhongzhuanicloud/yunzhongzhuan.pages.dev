@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<script type="text/javascript">
-	(function() {
+		
+	if(true){
+		
 	    // 获取当前完整 URL
-	    var currentURL = window.location.href;
+	    let currentURL = window.location.href;
 	
 	    // 检查是否是 yunzhongzhuan.com（不含 www）
 	    if (currentURL.match(/^https?:\/\/yunzhongzhuan\.com(\/|$)/)) {
@@ -14,7 +16,12 @@
 	        // 跳转到新 URL
 	        window.location.href = newURL;
 	    }
-	})();
+
+		if(window.location.href.indexOf('http://')!=-1){
+	    	window.location.href = "https://" + window.location.href.split('://')[1];
+		}
+	}
+	
 	</script>
 	<head>
 		<!--<base href=""/>-->
@@ -1789,6 +1796,7 @@
 		
 	</body>
 </html>
+
 
 
 
