@@ -7957,9 +7957,15 @@ function sharefile_copy(id,key){
 }
 
 let sharefile_content_link_item_show_terms_button = document.getElementById('sharefile-content-link-item-show-terms-button');
+let sharefile_content_link_item_show_terms_button_2 = document.getElementById('sharefile-content-link-item-show-terms-button-2');
 sharefile_content_link_item_show_terms_button.onclick = function() {
 	window.location.href = "#terms-of-services";
 }
+sharefile_content_link_item_show_terms_button_2.onclick = function() {
+	window.location.href = "#terms-of-services";
+}
+
+
 let login_input_span_user_terms = document.getElementsByClassName('login-input-span-user-terms');
 for(let i=0;i<login_input_span_user_terms.length;i++){
 	login_input_span_user_terms[i].onclick = function() {
@@ -11088,6 +11094,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
