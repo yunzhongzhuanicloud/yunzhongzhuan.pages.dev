@@ -8018,6 +8018,7 @@ let sharefile_content_link_item_download_button_38 = document.getElementById('sh
 let sharefile_content_link_item_download_button_39 = document.getElementById('sharefile-content-link-item-download-button-39');
 
 let sharefile_content_link_item_sharefile_copy_button = document.getElementById('sharefile-content-link-item-sharefile-copy-button');
+let sharefile_content_link_item_show_terms_button = document.getElementById('sharefile-content-link-item-show-terms-button');
 
 let sharefile_content_userinfo_profile_picture = document.getElementById('sharefile-content-userinfo-profile-picture');
 let sharefile_content_link_items = document.getElementsByClassName('sharefile-content-link-items')[0];
@@ -8112,9 +8113,9 @@ function get_sharefile(id,key){
 
 				
 					sharefile_content_link_item_download_button_99.href = ResultJSON["ftp"].split('?')[0]+"?download=yunzhongzhuan.com";
-					sharefile_content_link_item_download_button_99.style.color="#ff5050";
+					sharefile_content_link_item_download_button_99.style.color="#ff8400";
 					sharefile_content_link_item_download_button_99.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_99.style.borderBottom="2px dashed #ff5050";
+					sharefile_content_link_item_download_button_99.style.borderBottom="2px dashed #ff8400";
 
 				
 					sharefile_content_link_item_download_button_20.href = "https://a.download.yunzhongzhuan.com" + ResultJSON["url"];
@@ -8221,6 +8222,9 @@ function get_sharefile(id,key){
 				sharefile_content_link_item_sharefile_copy_button.share_key = key;
 				sharefile_content_link_item_sharefile_copy_button.onclick = function() {
 					sharefile_copy(this.share_id,this.share_key);
+				}
+				sharefile_content_link_item_show_terms_button.onclick = function(){
+					sharefile_content_link_item_sharefile_copy_button.click();
 				}
 				
 
@@ -11086,6 +11090,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
