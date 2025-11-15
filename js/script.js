@@ -10610,7 +10610,7 @@ login_input_button_qq_login.onclick = async function(){
 		return false;
 	}
 
-	let text = '手机QQ扫描二维码安全登录。\r\n5秒钟后系统自动更新二维码。\r\n登录位置：广东省（服务器位置）';
+	let text = '手机QQ扫描二维码安全登录。\r\n5秒钟后系统自动更新二维码。\r\n登录地点：广东省深圳市（数据中心）';
 	// let qr_code = 'https://applicationprogramminginterface.yzzpan.com' + '/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";;
 	// let qr_code = api_server_url + '/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";;
 	// let qr_code = "https://gimg2.baidu.com/gimg/app=2011&src="+encodeURIComponent('https://cae45776685ba.cname.frontwize.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&");;
@@ -11094,6 +11094,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
