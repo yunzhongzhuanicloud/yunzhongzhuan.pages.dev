@@ -3,8 +3,8 @@
 	margin: 0;
 	border: 0;
 	outline: 0;
-	border-radius: 0px!important;
-	transition: 0s!important;
+	/*border-radius: 0px!important;
+	transition: 0s!important;*/
 	word-break: break-all;
 }
 html{
