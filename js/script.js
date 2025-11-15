@@ -8018,7 +8018,7 @@ let sharefile_content_link_item_download_button_38 = document.getElementById('sh
 let sharefile_content_link_item_download_button_39 = document.getElementById('sharefile-content-link-item-download-button-39');
 
 let sharefile_content_link_item_sharefile_copy_button = document.getElementById('sharefile-content-link-item-sharefile-copy-button');
-let sharefile_content_link_item_show_terms_button = document.getElementById('sharefile-content-link-item-show-terms-button');
+
 
 let sharefile_content_userinfo_profile_picture = document.getElementById('sharefile-content-userinfo-profile-picture');
 let sharefile_content_link_items = document.getElementsByClassName('sharefile-content-link-items')[0];
@@ -8223,9 +8223,7 @@ function get_sharefile(id,key){
 				sharefile_content_link_item_sharefile_copy_button.onclick = function() {
 					sharefile_copy(this.share_id,this.share_key);
 				}
-				sharefile_content_link_item_show_terms_button.onclick = function(){
-					sharefile_content_link_item_sharefile_copy_button.click();
-				}
+
 				
 
 				// 清理源和本地
