@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>upload</title>
+</head>
+<body>
+<script type="text/javascript">
+// 代码而已 能运行就行了 别管那么多
+document.domain="yunzhongzhuan.com";
+let setSessidTimes = 0;
+let setSessidMaxTimes = 100;
+function setSessid(){
+	if(setSessidTimes>setSessidMaxTimes){return false;};
+	setSessidTimes=setSessidTimes+1;
+	try{
+		document.cookie="PHPSESSID="+userinfo["session_id"] + "; path=/";
+	}catch(e){
+		// pass
+	};
+	setTimeout(setSessid,100);
+}
+setSessid();
+// 上传
+function FileUploadStart(fb,so){
+	// 如果未登录
+	if(userinfo["id"]!=undefined&&userinfo["id"]!=undefined!=null&&userinfo["id"]!=undefined!=''&&userinfo["qq"]!=undefined&&userinfo["qq"]!=undefined!=null&&userinfo["qq"]!=undefined!=''){
+		// pass
+	}else{
+		return false;
+	}
+		//////////console.log(fb);
+		// 开始文件分片上传
+		let xhr;
+		let ot;
+		let oloaded;
+		let sendOK; // 已发送次数
+		let sendTimes; // 总共需要发送次数
+		//上传文件方法
+		function UpladFile() {
+			// let fileObj = document.getElementById("file").files[0]; // js 获取文件对象
+            // let url = "https://upload.yunzhongzhuan.com/php/v4/upload"; // 接收上传文件的后台地址 
+		let url = "/php/v4/upload"; // 接收上传文件的后台地址 
+            let filename=fb.name; 
+            // 需要将域名解析到 CF
+            // 接收文件的服务器需要绑定上传API的域名
+            // 上传大小在 PHP 中需要允许 需要修改  宝塔 找到软件 PHP 修改最大上传限制
+            let LENGTH = upload_file_item_size; // 每次上传长度
+            let totalSize = fb.size;  //文件总大小
+            let start = 0;      //每次上传的开始字节 
+            let end = start + LENGTH;   //每次上传的结尾字节 
+			let blob = null;        //二进制对象 
+			// 已经发送次数
+            sendOK = 0;
+            // 共要发送次数
+            sendTimes = Math.ceil(totalSize/LENGTH);
+            //////////console.log("需要发送 " + sendTimes + " 次！");
+            // 发送文件数据的数组
+            let sendFileBlobArray = [];
+            // 切分二进制分片数据进入数组
+             for(let i=sendOK; i < sendTimes;i++){
+                  sendFileBlobArray[i] = fb.slice(start,end);
+                  start = end; 
+                  end = start + LENGTH; 
+            }
+            //////////console.log(sendFileBlobArray);
+            start = 0;//每次上传的开始字节
+            end = 0 + LENGTH;//每次上传的结尾字节
+            xhr = new XMLHttpRequest();  // XMLHttpRequest 对象
+            so.xhrObj = xhr;
+			function send(){
+				if(so.upload_paused){
+					setTimeout(send,500);
+					return false;
+				}
+				if(so.stop){
+					return false;
+				}
+	            blob = sendFileBlobArray[sendOK];//根据长度截取每次需要上传的数据 
+	            xhr.onreadystatechange=function(){
+	            	if(xhr.readyState==4 && xhr.status>=500 && xhr.status<600){setTimeout(send,500);}
+    	            if(xhr.readyState==4 && xhr.status==200){
+    	            	//////////console.log(xhr.responseText);
+    	            	// ////////console.log("2020-11-05 17:16:41 修复批量上传失败 测试");
+    	            	try{
+	    	            	let ResultJSON = JSON.parse(xhr.responseText);
+							//////////console.log(ResultJSON);
+							if(ResultJSON["status"]){
+								so.token = ResultJSON["token"];
+		    	                sendOK++;
+		    	                if(sendOK<sendTimes){
+		    	                	setTimeout(send,500);
+		    	                }else{
+						so.stop = true;
+		    	                }
+							}else{
+								parent.upload_file_error('上传中断',ResultJSON["message"],'error');
+							}
+						}catch(err){
+						   //在此处理错误
+							parent.upload_file_error('上传中断','上传中断','error');
+						}
+    	            }else{
+    	            	// ////////console.log(xhr.responseText);
+    	            }
+                }
+	            xhr.open("post", url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。
+	            xhr.onload = uploadComplete; //请求完成
+	            xhr.onerror =  uploadFailed_ReSend; //请求失败
+	            xhr.upload.onprogress = progressFunction;//【上传进度调用方法实现】
+	            xhr.upload.onloadstart = function(){//上传开始执行方法
+	                ot = new Date().getTime();   //设置上传开始时间
+	                oloaded = 0;//设置上传开始时，以上传的文件大小为0
+	            };
+	            // 如果是最后一发
+	            if((sendOK+1) == sendTimes){
+
+			
+			xhr.setRequestHeader("SID", userinfo["session_id"]);
+			xhr.setRequestHeader("FileSize",  encodeURIComponent (fb.size) );
+			xhr.setRequestHeader("FileName", encodeURIComponent (fb.name) );
+			xhr.setRequestHeader("folderOf", so.parent_folder_id);
+
+	            	//xhr.setRequestHeader("Content-Range", "bytes " + (""+(sendOK*LENGTH)) +"-"+ fb.size + "/" +  fb.size  ) ;
+	            	xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ fb.size   ) ;
+	            }else{
+	            	//xhr.setRequestHeader("Content-Range", "bytes " + (""+(sendOK*LENGTH)) +"-"+ (""+((sendOK+1)*LENGTH)) + "/" +  fb.size  ) ;
+	            	xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ (((sendOK+1)*LENGTH)-1)  ) ;
+	            }
+
+	            //xhr.setRequestHeader("sendOK", sendOK);
+				xhr.withCredentials = true;
+				// 如果是最后一次
+				if((sendOK+1) == sendTimes){
+					// 要判断 hash 完成才允许提交
+					function send_post(xhr,so,blob){
+						if(so.hash != undefined && so.hash !='' && so.hash != null && so.hash.length === 64){
+
+							// xhr.setRequestHeader("HASH", so.hash  ) ;
+							if(so.token == undefined){
+								so.token = so.hash;
+							}else{
+								so.token = so.token + so.hash;
+							}
+							xhr.setRequestHeader("token", so.token);
+							xhr.send(blob);
+						}else{
+							setTimeout( send_post , 1000 , xhr , so , blob );
+						}
+					}
+					setTimeout( send_post , 1000 , xhr , so , blob );
+				}else{
+					// 如果不是第一次上传
+					if(so.token != undefined){
+						xhr.setRequestHeader("token", so.token);
+					}
+					xhr.send(blob); //开始上传，发送form数据
+				}
+	        }
+			function uploadFailed_ReSend(){
+				send();
+			}
+	        send();
+	    }
+	    UpladFile();
+		//上传失败
+		function uploadFailed(evt) {
+			// ////////console.log(evt);
+		}
+ 		//上传成功响应
+        function uploadComplete(evt) {
+         //服务断接收完文件返回的结果
+         //    alert(evt.target.responseText);
+         //////////console.log(sendOK);
+         //////////console.log(sendTimes);
+         	if(sendOK==sendTimes){
+	            //////////console.log(evt.target.responseText);
+	            //////////console.log("上传成功！");
+	            let ResultJSON = JSON.parse(evt.target.responseText);
+	            if(ResultJSON["status"]){
+	            	so.upload_status_element.style.width = "0%"; // 上传完成 进度归零
+	            	so.upload_speed_element.innerText = "上传完成"; // 上传完成 进度归零
+	            	so.upload_status_element_text.innerText =  '100%';
+			so.pause_element.title = "完成";
+			so.pause_element_i.className = "fa fa-check-circle";
+			so.pause_element.onclick = function(){return false;};
+	            	// 加载0个文件夹 加载1个文件 加载到前面
+			// get_files_loadover = false;
+			// get_folders_loadover = false;
+			// get_files();
+			// 把文件添加到列表
+			let file_item = {
+				"name":ResultJSON["name"],
+				"id":ResultJSON["id"],
+				// "date":ResultJSON["date"],
+				"date":parent.get_datetime(),
+				// "size":ResultJSON["size"],
+				"size":fb.size,
+				"share":ResultJSON["share"],
+				"url":ResultJSON["url"],
+				// "parent":ResultJSON["parent_folder_id"],
+				"parent":so.parent_folder_id
+			}
+			parent.push_files_to_files_page([file_item],true);
+	            }else{
+			so.upload_status_element.style.width = "0%"; // 上传完成 进度归零
+	            	so.upload_speed_element.innerText = "上传失败"; // 上传完成 进度归零
+	            	so.upload_status_element_text.innerText =  '未知错误';
+	            	parent.upload_file_error('上传中断','上传中断','error');
+	            }
+				if(so.stop == false){
+					so.stop = true;
+					if(so.xhrObj!=undefined){
+						so.xhrObj.abort();
+					}
+				}
+			}
+        }
+        //上传进度实现方法，上传过程中会频繁调用该方法
+        function progressFunction(evt) {
+             let progressBar = document.getElementById("progressBar");
+             let percentageDiv = document.getElementById("percentage");
+             // event.total是需要传输的总字节，event.loaded是已经传输的字节。如果event.lengthComputable不为真，则event.total等于0
+             if (evt.lengthComputable) {//
+                 // progressBar.max = evt.total;
+                 // progressBar.value = evt.loaded;
+                 // percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100) + "%";
+		so.upload_status_element.style.width =  Math.round(((evt.loaded / evt.total * 100)/sendTimes) + ((sendOK/sendTimes)*100))     + "%";
+                 //////////console.log((sendOK + " - " + sendTimes));
+            }
+            let time = document.getElementById("time");
+            let nt = new Date().getTime();//获取当前时间
+            let pertime = (nt-ot)/1000; //计算出上次调用该方法时到现在的时间差，单位为s
+            ot = new Date().getTime(); //重新赋值时间，用于下次计算
+            
+            let perload = evt.loaded - oloaded; //计算该分段上传的文件大小，单位b       
+            oloaded = evt.loaded;//重新赋值已上传文件大小，用以下次计算
+        
+            //上传速度计算
+            let speed = perload/pertime;//单位b/s
+            let bspeed = speed;
+            let units = 'b/s';//单位名称
+            if(speed/1024>1){
+                speed = speed/1024;
+                units = 'k/s';
+            }
+            if(speed/1024>1){
+                speed = speed/1024;
+                units = 'M/s';
+            }
+            speed = speed.toFixed(1);
+            //剩余时间
+            let resttime = ((evt.total-evt.loaded)/bspeed).toFixed(1);
+            // statusObj.getElementsByClassName('uploadsList-li-uploading-status')[0].getElementsByTagName('span')[0].innerText = '，速度：'+speed+units+'，剩余时间：'+resttime+'s';
+            // so.getElementsByClassName('upload-file-list-li-status')[0].innerText =  Math.round(((evt.loaded / evt.total * 100)/sendTimes) + ((sendOK/sendTimes)*100))     + "%";
+	    so.upload_status_element_text.innerText =  Math.round(((evt.loaded / evt.total * 100)/sendTimes) + ((sendOK/sendTimes)*100))     + "%";
+		so.upload_speed_element.innerText = speed + units;
+		if(bspeed==0){
+                	so.upload_status_element_text.innerText = '任务终止';
+        	}
+        }
+}
+window.onload = function(){
+
+	setTimeout(function(){
+		parent.set_upload_window_iframe_element();
+	},200);
+	
+	
+}
+</script>
+</body>
+</html>
