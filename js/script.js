@@ -8118,7 +8118,7 @@ function get_sharefile(id,key){
 					sharefile_content_link_item_download_button_19.style.borderBottom="2px dashed #ff5050";
 
 				
-					sharefile_content_link_item_download_button_99.href = ResultJSON["ftp"].split('?')[0]+"?download=yunzhongzhuan.com";
+					sharefile_content_link_item_download_button_99.href = ResultJSON["ftp"].split('?')[0];
 					sharefile_content_link_item_download_button_99.style.color="#ff8400";
 					sharefile_content_link_item_download_button_99.style.fontWeight="bold";
 					sharefile_content_link_item_download_button_99.style.borderBottom="2px dashed #ff8400";
@@ -11094,6 +11094,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
