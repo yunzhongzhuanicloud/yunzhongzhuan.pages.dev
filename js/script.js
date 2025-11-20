@@ -6366,6 +6366,7 @@ function wechat_bind_auto_click_login_button(){
 // 加载上传域名，提前获取IP
 let cdn_cgi_trace_upload_locked = false;
 function cdn_cgi_trace_upload(){
+	return false;
 	if(cdn_cgi_trace_upload_locked){
 		return false;
 	}
@@ -11183,6 +11184,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
