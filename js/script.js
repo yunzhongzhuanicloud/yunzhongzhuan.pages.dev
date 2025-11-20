@@ -7806,7 +7806,7 @@ function set_upload_cdn_cloudflare(){
 		});
 	}
 }
-
+upload_window_iframe_element.src = api_upload_web_url;
 
 
 
@@ -11184,6 +11184,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
