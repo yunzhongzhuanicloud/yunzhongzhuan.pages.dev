@@ -1,3 +1,6 @@
 {
-  "CloudflareTunnelXrayPowerOff": false
+  "CloudflareTunnelXrayPowerOff": false,
+  "KillIPv4":[
+    "1.2.3.4"
+  ]
 }
