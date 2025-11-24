@@ -1,6 +1,4 @@
 {
   "CloudflareTunnelXrayPowerOff": true,
-  "KillIPv4":[
-
-  ]
+  
 }
