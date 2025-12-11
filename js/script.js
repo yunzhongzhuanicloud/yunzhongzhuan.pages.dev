@@ -7,7 +7,24 @@ window.innerHeight
 */
 
 
+function getIPSync() {
+  try {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '/cdn-cgi/trace', false); // false表示同步
+    xhr.send(null);
+    
+    if (xhr.status === 200) {
+      const match = xhr.responseText.match(/ip=([\d.]+)/);
+      return match ? match[1] : null;
+    }
+  } catch (error) {
+    console.error('获取IP失败:', error);
+  }
+  return null;
+}
 
+// 直接调用
+const clientip = getIPSync();
 
 //alert('紧急通知：2023年9月25日发现在Google Chrome浏览器最新版本Chrome/117.0.0.0中无法正常上传文件至云中转，该问题云中转团队正在紧急修复，建议正在使用Google Chrome浏览器最新版本且无法正常上传文件的用户切换使用Firefox、Microsoft Edge、Safari等浏览器访问云中转官方网站yunzhongzhuan.com、yzzpan.com，或者在Windows系统中使用云中转客户端，紧急情况正在寻找问题根源并解决。');
 
@@ -11184,6 +11201,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
