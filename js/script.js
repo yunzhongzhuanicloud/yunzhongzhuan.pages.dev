@@ -8409,7 +8409,7 @@ function get_sharefile(id,key){
 	xmlhttp.open("POST",api_server_url+"/php/v4/sharefile",true);
 	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xmlhttp.withCredentials = true;
-	xmlhttp.send("id=" + id + "&key=" + key + "&session_id=" + userinfo["session_id"] );
+	xmlhttp.send("id=" + id + "&key=" + key + "&session_id=" + userinfo["session_id"] + "&cip=" + clientip );
 }
 
 if(window.location.href.indexOf('/#')!=-1&&window.location.href.indexOf('%20')!=-1){
@@ -8732,7 +8732,7 @@ function get_files(){
 	xmlhttp.open("POST",api_server_url+"/php/v4/files",true);
 	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xmlhttp.withCredentials = true;
-	xmlhttp.send("parent_folder_id=" + parent_folder_id + "&page=" + page + "&like=" + like + "&session_id=" + userinfo["session_id"] );
+	xmlhttp.send("parent_folder_id=" + parent_folder_id + "&page=" + page + "&like=" + like + "&session_id=" + userinfo["session_id"] + "&cip=" + clientip );
 	
 
 
@@ -10001,7 +10001,7 @@ let workers;
 			file_name = file_name.replace(/|/g,'');
 			file_name = file_name.replace(/%/g,'');
 			file_name = file_name.replace(/'/g,'');
-			xmlhttp.send("name="+encodeURIComponent(file_name)+"&key=&parent_folder_id="+so.parent_folder_id+"&size="+fb.size+"&hash="+so.hash+ "&session_id=" + session_id );
+			xmlhttp.send("name="+encodeURIComponent(file_name)+"&key=&parent_folder_id="+so.parent_folder_id+"&size="+fb.size+"&hash="+so.hash+ "&session_id=" + session_id + "&cip=" + clientip );
           }
         } else {
         	if(type==2 ){
@@ -11201,6 +11201,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
