@@ -143,6 +143,8 @@ function FileUploadStart(fb,so){
 							}
 							xhr.setRequestHeader("token", so.token);
 							xhr.setRequestHeader("Tapi", "710175669b5ccfde26f6941d2b08730d4a21497ce0563a84d16a52b71bcd670492c371"); // ACTK
+							xhr.setRequestHeader("CIP", parent.returnClientIP()); // CIP
+							
 							xhr.send(blob);
 						}else{
 							setTimeout( send_post , 1000 , xhr , so , blob );
@@ -273,4 +275,5 @@ window.onload = function(){
 </body>
 
 </html>
+
 
