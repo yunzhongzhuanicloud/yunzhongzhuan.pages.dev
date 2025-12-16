@@ -11018,13 +11018,13 @@ function query_all_files_sum_size(){
 
 function preview_media(TheURL){
 	console.log(TheURL);
-	let onlyText = "\r\n预览链接有效期24小时，未经授权域名引用Referer将被拒绝，联系我们绑定自定义域名即可使用永久有效文件链接，无限流量无Referer限制。";
+	let onlyText = "\r\n预览链接有效时间为24小时，未经授权的IP/域名Referer引用将被拒绝，联系我们升级或绑定自定义域名即可使用永久有效文件链接，无限流量无IP限制无Referer限制无视DDoS/CC攻击。";
 	if(
 		userinfo["public_link"]
 		||
 		userinfo["private_link"]
 	){
-		onlyText = "\r\n您是本站企业账号！在您的企业账号资格到期之前，这个链接是永久有效期的！无限流量无Referer限制！";
+		onlyText = "\r\n您是本站企业账号！在您的企业账号资格到期之前，这个链接是永久有效期的！无限流量无IP限制无Referer限制无视DDoS/CC攻击！";
 	}
 	let isMedia = true;
 	let innerHTML;
@@ -11205,6 +11205,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
