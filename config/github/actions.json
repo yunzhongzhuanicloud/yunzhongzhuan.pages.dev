@@ -1,6 +1,9 @@
 {
+    
   "CloudflareTunnelXrayPowerOff": true,
+
   "KillIPv6":[
 
 ]
+
 }
