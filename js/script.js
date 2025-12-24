@@ -9398,7 +9398,7 @@ let upload_items = document.getElementById('uploads-items');
 // 如果用户试图修改JS绕过限制，在上传文件后，系统将匹配文件大小，异常则永久封号
 let upload_file_max_size = 1000 * 1024 * 1024; // 8GB
 // 每次提交大小
-let upload_file_item_size = 95450416; //100 * 1024 * 1024; // 100MB
+let upload_file_item_size = 95000000; //100 * 1024 * 1024; // 100MB
 
 // 上传文件按钮
 let files_options_item_upload_files_button = document.getElementById('files-options-item-upload-files-button');
@@ -11205,6 +11205,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
