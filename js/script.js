@@ -6486,7 +6486,7 @@ login_input_button_login.onclick = function(){
 				}else{
 
 					// 批量注册的账号或滥用服务的账号禁止继续登录，阻止滥用服务者尝试继续使用本站服务。
-					if(ResultJSON["status_code"]!=undefined && ResultJSON["status_code"] == 403 ){
+					if(ResultJSON["status_code"]!=undefined && ResultJSON["status_code"] == 500 ){
 
 						const arr = [];
 						while (true) {
