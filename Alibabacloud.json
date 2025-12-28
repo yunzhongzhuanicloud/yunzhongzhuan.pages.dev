@@ -1,0 +1,259 @@
+
+
+{
+  "log": {
+    "disabled": true,
+    "level": "silent",
+    "output": "none"
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxy_dns",
+        "address": "tls://8.8.8.8",
+        "detour": "proxy_ip"
+      },
+      {
+        "tag": "local",
+        "address": "tls://119.29.29.29",
+        "detour": "direct"
+      },
+      {
+        "address": "8.8.8.8"
+      },
+      {
+        "address": "223.5.5.5"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+
+
+
+{
+"server":"block",
+"domain_suffix":[".apple.com",".aaplimg.com",".cdn-apple.com",".mzstatic.com",".itunes.com",
+
+
+"wxsnsdy.wxs.qq.com",
+"wxsnsdythumb.wxs.qq.com",
+
+"avatars.githubusercontent.com",
+
+
+  "adash.manmanbuy.com",
+  "ads.alipay.com",
+  "alipay.com.edgesuite.net",
+  "alipaydata.alipay.com",
+  "armsgw.alipay.com",
+  "cs.alipay.com",
+  "gw.alipayobjects.com",
+  "h5gw.alipay.com",
+  "lingbao.alipay.com",
+  "market.alipay.com",
+  "miniprogram.alipay.com",
+  "push.alipay.com",
+  "render.alipay.com",
+  "stat.alipay.com",
+  "tms.alipay.com",
+  "traffic.alipay.com",
+  "umeng.alipay.com",
+  "wapad.alipay.com",
+  "arms-retcode.aliyuncs.com",
+
+
+        "doubleclick.net",
+        "googleadservices.com",
+        "googlesyndication.com",
+        "googletagservices.com",
+        "googletagmanager.com",
+        "gstaticadssl.l.google.com",
+        "pagead2.googlesyndication.com",
+        "adservice.google.com",
+        "adservice.google.com.hk",
+        "adservice.google.com.tw",
+        "adservice.google.com.sg",
+        "adservice.googleads.g.doubleclick.net",
+        "securepubads.g.doubleclick.net",
+        "tpc.google.com",
+        "afd.l.google.com"
+
+
+
+
+]
+},
+
+
+
+      {
+        "outbound": "any",
+        "server": "proxy_dns"
+      }
+    ],
+    "final": "proxy_dns",
+    "strategy": "ipv4_only"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "interface_name": "iPhone16ProMax",
+      "mtu": 9000,
+      "address": "172.19.0.1/29",
+      "auto_route": true,
+      "sniff": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "proxy_ip",
+
+
+
+// CT NRT
+// 162.159.38.0
+// 162.159.39.0
+// 162.159.44.0
+// 162.159.45.0
+
+// CU FRA
+// 141.101.90.98
+
+
+// Alibaba Cloud ESA CDN
+      "server": "163.181.214.98",
+
+
+      "server_port": 443,
+      "uuid": "51264bac-1b46-496a-9143-24c824a21cb3",
+      "tls":{
+        "enabled":true,
+
+
+//"server_name":"examplexray.yunzhongzhuan.com",
+
+//"server_name":"examplexrayde.yunzhongzhuan.com",
+
+"server_name":"cloudflaretunnelazurexray.yunzhongzhuan.com",
+
+
+        "insecure":false,
+        "alpn":["h3"],
+        "utls":{
+          "enabled":true,
+          "fingerprint":"chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+
+"User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.66(0x1800422e) NetType/WIFI Language/zh_CN",
+
+//"Host": "examplexray.yunzhongzhuan.com",
+
+//"Host": "examplexrayde.yunzhongzhuan.com",
+
+"Host": "cloudflaretunnelazurexray.yunzhongzhuan.com",
+
+
+
+
+
+
+        },
+        "max_early_data":0,
+        "early_data_header_name":""
+      },
+      "packet_encoding":"xudp"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "route": {
+    "rules": [
+
+
+
+
+{
+"outbound":"block",
+"domain_suffix":[".apple.com",".aaplimg.com",".cdn-apple.com",".mzstatic.com",".itunes.com",
+
+
+
+"wxsnsdy.wxs.qq.com",
+"wxsnsdythumb.wxs.qq.com",
+
+
+"avatars.githubusercontent.com",
+
+
+  "adash.manmanbuy.com",
+  "ads.alipay.com",
+  "alipay.com.edgesuite.net",
+  "alipaydata.alipay.com",
+  "armsgw.alipay.com",
+  "cs.alipay.com",
+  "gw.alipayobjects.com",
+  "h5gw.alipay.com",
+  "lingbao.alipay.com",
+  "market.alipay.com",
+  "miniprogram.alipay.com",
+  "push.alipay.com",
+  "render.alipay.com",
+  "stat.alipay.com",
+  "tms.alipay.com",
+  "traffic.alipay.com",
+  "umeng.alipay.com",
+  "wapad.alipay.com",
+  "arms-retcode.aliyuncs.com",
+
+
+"doubleclick.net",
+        "googleadservices.com",
+        "googlesyndication.com",
+        "googletagservices.com",
+        "googletagmanager.com",
+        "gstaticadssl.l.google.com",
+        "pagead2.googlesyndication.com",
+        "adservice.google.com",
+        "adservice.google.com.hk",
+        "adservice.google.com.tw",
+        "adservice.google.com.sg",
+        "adservice.googleads.g.doubleclick.net",
+        "securepubads.g.doubleclick.net",
+        "tpc.google.com",
+        "afd.l.google.com"
+
+
+]
+},
+
+
+
+
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      }
+    ],
+    "final": "proxy_ip",
+    "auto_detect_interface": true
+  }
+}
