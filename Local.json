@@ -1,0 +1,201 @@
+
+
+{
+    "dns": {
+
+
+        "servers": [
+            {
+                "tag": "proxy_dns",
+                "address": "tls://8.8.8.8",
+                "detour": "proxy_ip"
+            },
+            {
+                "tag": "local",
+                "address": "223.5.5.5",
+                "detour": "direct"
+            },
+            {
+                "address": "8.8.8.8"
+            },
+            {
+                "address": "223.5.5.5"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "rules": [
+
+
+
+
+
+{
+"server":"block",
+"domain_suffix":[".apple.com",".aaplimg.com",".cdn-apple.com",".mzstatic.com",".itunes.com",
+
+
+"wxsnsdy.wxs.qq.com",
+"wxsnsdythumb.wxs.qq.com",
+
+
+"avatars.githubusercontent.com",
+
+
+  "adash.manmanbuy.com",
+  "ads.alipay.com",
+  "alipay.com.edgesuite.net",
+  "alipaydata.alipay.com",
+  "armsgw.alipay.com",
+  "cs.alipay.com",
+  "gw.alipayobjects.com",
+  "h5gw.alipay.com",
+  "lingbao.alipay.com",
+  "market.alipay.com",
+  "miniprogram.alipay.com",
+  "push.alipay.com",
+  "render.alipay.com",
+  "stat.alipay.com",
+  "tms.alipay.com",
+  "traffic.alipay.com",
+  "umeng.alipay.com",
+  "wapad.alipay.com",
+  "arms-retcode.aliyuncs.com",
+
+ "doubleclick.net",
+        "googleadservices.com",
+        "googlesyndication.com",
+        "googletagservices.com",
+        "googletagmanager.com",
+        "gstaticadssl.l.google.com",
+        "pagead2.googlesyndication.com",
+        "adservice.google.com",
+        "adservice.google.com.hk",
+        "adservice.google.com.tw",
+        "adservice.google.com.sg",
+        "adservice.googleads.g.doubleclick.net",
+        "securepubads.g.doubleclick.net",
+        "tpc.google.com",
+        "afd.l.google.com"
+
+
+
+]
+},
+
+
+
+
+            {
+                "outbound": "any",
+                "server": "local"
+            }
+        ],
+        "strategy": "ipv4_only",
+        "final": "local"
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "interface_name": "iPhone16ProMax",
+            "address": "172.19.0.1/29",
+            "auto_route": true,
+            "strict_route": false,
+            "sniff": true,
+            "mtu": 9000
+        }
+    ],
+    "outbounds": [
+ 
+  
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "type": "dns",
+            "tag": "dns-out"
+        }
+    ],
+    "route": {
+        "rules": [
+
+
+
+{
+"outbound":"block",
+"domain_suffix":[".apple.com",".aaplimg.com",".cdn-apple.com",".mzstatic.com",".itunes.com",
+
+"wxsnsdy.wxs.qq.com",
+"wxsnsdythumb.wxs.qq.com",
+
+
+
+"avatars.githubusercontent.com",
+
+
+  "adash.manmanbuy.com",
+  "ads.alipay.com",
+  "alipay.com.edgesuite.net",
+  "alipaydata.alipay.com",
+  "armsgw.alipay.com",
+  "cs.alipay.com",
+  "gw.alipayobjects.com",
+  "h5gw.alipay.com",
+  "lingbao.alipay.com",
+  "market.alipay.com",
+  "miniprogram.alipay.com",
+  "push.alipay.com",
+  "render.alipay.com",
+  "stat.alipay.com",
+  "tms.alipay.com",
+  "traffic.alipay.com",
+  "umeng.alipay.com",
+  "wapad.alipay.com",
+  "arms-retcode.aliyuncs.com",
+
+ "doubleclick.net",
+        "googleadservices.com",
+        "googlesyndication.com",
+        "googletagservices.com",
+        "googletagmanager.com",
+        "gstaticadssl.l.google.com",
+        "pagead2.googlesyndication.com",
+        "adservice.google.com",
+        "adservice.google.com.hk",
+        "adservice.google.com.tw",
+        "adservice.google.com.sg",
+        "adservice.googleads.g.doubleclick.net",
+        "securepubads.g.doubleclick.net",
+        "tpc.google.com",
+        "afd.l.google.com"
+
+
+
+
+]
+},
+
+
+
+            {
+                "protocol": "dns",
+                "outbound": "dns-out"
+            }
+        ],
+        "auto_detect_interface": true,
+        "final": "direct"
+    },
+    "log": {
+        "level": "slient",
+        "output": "none",
+        "disabled": true
+    }
+}
+
