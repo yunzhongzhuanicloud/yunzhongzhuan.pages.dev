@@ -31,7 +31,10 @@
 
 {
 "server":"block",
-"domain_suffix":[".apple.com",".aaplimg.com",".cdn-apple.com",".mzstatic.com",".itunes.com",
+"domain_suffix":[
+
+
+
 
 "wxsnsdy.wxs.qq.com",
 "wxsnsdythumb.wxs.qq.com",
@@ -175,7 +178,9 @@
 
 {
 "outbound":"block",
-"domain_suffix":[".apple.com",".aaplimg.com",".cdn-apple.com",".mzstatic.com",".itunes.com",
+"domain_suffix":[
+
+
 
 
 "wxsnsdy.wxs.qq.com",
@@ -241,3 +246,4 @@
         "disabled": true
     }
 }
+
