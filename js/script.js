@@ -10093,7 +10093,7 @@ let workers;
 						swal({
 							title: "系统信息",
 							// text: "免费用户单个文件上传最大允许" + get_size_unit( not_vip_upload_file_size ) + "。\r\n会员用户单个文件上传最大允许" + get_size_unit( upload_file_max_size ) + "。\r\n联系我们，支持上传文件大小不限。",
-							text: "您的账号上传单个文件最大允许" + get_size_unit( not_vip_upload_file_size ) + "。\r\n联系我们上传单个文件最大支持" + get_size_unit(30*1024*1024*1024) + "。\r\n注意：最大允许保存单个文件大小范围由系统定期调整，并非固定，请关注云中转官方哔哩哔哩账号/微信公众号/官方QQ群及时了解最新消息。",
+							text: "您的账号上传单个文件最大允许" + get_size_unit( not_vip_upload_file_size ) + "。\r\n联系我们上传单个文件最大支持" + get_size_unit(100*1024*1024*1024) + "。\r\n注意：最大允许保存单个文件大小范围由系统定期调整，并非固定，请关注云中转官方哔哩哔哩账号/微信公众号/官方QQ群及时了解最新消息。",
 							icon: "warning",
 							buttons: ["取消","详情"],
 							closeOnClickOutside: false,
@@ -10409,7 +10409,7 @@ let workers;
 		}else{
 			swal({
 			  title: "温馨提示",
-			  text: "共有" + over_size_num + "个文件不能加入上传列队，因其大小异常、数据不完整或超出" + get_size_unit( upload_file_max_size ) + "单个文件上传最大大小允许（注意：最大允许保存单个文件大小范围由系统定期调整，并非固定，请关注云中转官方哔哩哔哩账号/微信公众号/官方QQ群及时了解最新消息）。\r\n联系我们上传单个文件最大支持" + get_size_unit(30*1024*1024*1024) + "。",
+			  text: "共有" + over_size_num + "个文件不能加入上传列队，因其大小异常、数据不完整或超出" + get_size_unit( upload_file_max_size ) + "单个文件上传最大大小允许（注意：最大允许保存单个文件大小范围由系统定期调整，并非固定，请关注云中转官方哔哩哔哩账号/微信公众号/官方QQ群及时了解最新消息）。\r\n联系我们上传单个文件最大支持" + get_size_unit(100*1024*1024*1024) + "。",
 			  icon: "warning",
 			  buttons:["取消","详情"],
 			  closeOnClickOutside: false,
@@ -11233,6 +11233,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
