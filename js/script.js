@@ -9161,6 +9161,11 @@ let links_data = [
 				"name":"JSON格式化",
 				"new_open":true,
 				"link":"/json"
+			},
+			{
+				"name":"TOTP-2FA",
+				"new_open":true,
+				"link":"/json"
 			}
 		]
 	},
@@ -11233,6 +11238,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
