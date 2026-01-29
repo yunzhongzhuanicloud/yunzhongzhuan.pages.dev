@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>TOTP 2FA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #171717;
+  --text: #e5e5e5;
+  --muted: #a3a3a3;
+  --border: #2a2a2a;
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
+  --progress-bg: #2a2a2a;
+  --progress-fill: #e5e5e5;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #1f2328;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --btn-bg: #2da44e;
+  --btn-text: #ffffff;
+  --progress-bg: #d0d7de;
+  --progress-fill: #2da44e;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 400px;
+}
+
+.top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.toggle-label {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 999px;
+  transition: 0.3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #4cd964;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* 验证码 + 按钮 */
+.code-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 75px;  /* 更大 */
+  font-weight: 700;  /* 加粗 */
+  letter-spacing: 10px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.copy {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;  /* 更大 */
+  font-size: 16px;
+  font-weight: 700;    /* 加粗 */
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.copy:active {
+  transform: translateY(1px);
+}
+
+/* 输入框 */
+input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  padding: 10px 0;
+  color: var(--text);
+  font-size: 16px;    /* 放大 */
+  font-weight: 700;   /* 加粗 */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+input::placeholder {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* 进度条 */
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background: var(--progress-bg);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--progress-fill);
+  transform-origin: left;
+  transition: transform 0.2s linear;
+}
+</style>
+</head>
+
+<body data-theme="dark">
+  <div class="container">
+    <div class="top">
+      <span class="toggle-label">黑 / 白</span>
+      <label class="switch">
+        <input type="checkbox" id="themeSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="code-row">
+      <div class="code" id="code">------</div>
+      <button class="copy" id="copyBtn" onclick="copyCode()">Copy</button>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <input
+      id="secret"
+      placeholder="Base32 Secret"
+      autocomplete="off"
+    />
+  </div>
+
+<script>
+const input = document.getElementById("secret");
+const codeEl = document.getElementById("code");
+const copyBtn = document.getElementById("copyBtn");
+const progressFill = document.getElementById("progress");
+input.focus();
+
+/* 黑白切换 */
+const themeSwitch = document.getElementById("themeSwitch");
+themeSwitch.addEventListener('change', () => {
+  document.body.dataset.theme = themeSwitch.checked ? 'light' : 'dark';
+});
+
+/* base32 */
+function base32ToBytes(str) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+  let bits = "", bytes = [];
+  str = str.replace(/=+$/, "").toUpperCase();
+  for (let c of str) {
+    const v = chars.indexOf(c);
+    if (v < 0) continue;
+    bits += v.toString(2).padStart(5,"0");
+  }
+  for(let i=0;i+8<=bits.length;i+=8){
+    bytes.push(parseInt(bits.slice(i,i+8),2));
+  }
+  return new Uint8Array(bytes);
+}
+
+/* totp */
+async function totp(secret){
+  const key = base32ToBytes(secret);
+  if(!key.length) return "------";
+
+  const counter = Math.floor(Date.now()/1000/30);
+  const buf = new ArrayBuffer(8);
+  new DataView(buf).setUint32(4,counter);
+
+  const cryptoKey = await crypto.subtle.importKey("raw", key,{name:"HMAC",hash:"SHA-1"},false,["sign"]);
+  const hmac = new Uint8Array(await crypto.subtle.sign("HMAC",cryptoKey,buf));
+  const o = hmac[hmac.length-1]&0xf;
+  const bin = ((hmac[o]&0x7f)<<24)|((hmac[o+1]&0xff)<<16)|((hmac[o+2]&0xff)<<8)|(hmac[o+3]&0xff);
+  return (bin % 1e6).toString().padStart(6,"0");
+}
+
+/* 更新循环 */
+async function update(){
+  const secret = input.value.trim();
+  codeEl.textContent = await totp(secret);
+
+  // 更新进度条
+  const now = Date.now()/1000;
+  const remain = 30 - (now % 30);
+  progressFill.style.transform = `scaleX(${remain/30})`;
+}
+setInterval(update,1000);
+update();
+
+/* copy */
+function copyCode(){
+  const text = codeEl.textContent;
+  if(text.includes("-")) return;
+  navigator.clipboard.writeText(text);
+  //copyBtn.textContent="COPIED";
+  //setTimeout(()=>copyBtn.textContent="COPY",1200);
+}
+</script>
+</body>
+</html>
