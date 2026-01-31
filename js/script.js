@@ -6,6 +6,7 @@ window.innerHeight
 
 */
 
+alert("网站正在维护，暂时无法上传或下载文件，请稍后再访问。");
 
 function getIPSync() {
   try {
@@ -11238,6 +11239,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
