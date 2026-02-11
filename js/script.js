@@ -6,8 +6,6 @@ window.innerHeight
 
 */
 
-alert('北京时间: 2026-02-11_03:13:55\r\n一级通知: 系统维护中，期间请暂时不要上传文件，可能出现下载文件出现错误重定向，正在修复此问题。');
-
 
 
 function getIPSync() {
@@ -11241,6 +11239,7 @@ if(true||navigator.language.toLowerCase().indexOf('cn')!=-1){
 		item.style.display="";
 	}
 }
+
 
 
 
