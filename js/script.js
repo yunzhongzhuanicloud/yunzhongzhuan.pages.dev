@@ -4420,7 +4420,7 @@ function createFileItem(item){
 			
 			swal({
 				title: "自定义域",
-				text: "您的账号未开通此项功能。\r\n我们支持绑定自定义域名且无限流量。\r\n支持播放视频/播放音频/预览图片/文件下载等应用场景。\r\n联系我们，开启此项专用功能。\r\nhttps://您的域名.com/download/123/abc/music.mp3",
+				text: "您的账号未开通此项功能。\r\n我们支持绑定自定义域名无限流量无IP/Referer访问限制。。\r\n支持播放视频/播放音频/预览图片/文件下载等应用场景。\r\n联系我们，开启此项专用功能。\r\nhttps://您的域名.com/download/123/abc/music.mp3",
 				icon: "warning",
 				buttons: ["取消","查看"],
 				dangerMode: true,
@@ -5285,7 +5285,7 @@ files_main.oncontextmenu=function(e){
 				
 				swal({
 					title: "自定义域",
-					text: "您的账号未开通此项功能。\r\n我们支持绑定自定义域名且无限流量。\r\n支持播放视频/播放音频/预览图片/文件下载等应用场景。\r\n联系我们，开启此项专用功能。\r\nhttps://您的域名.com/download/123/abc/music.mp3",
+					text: "您的账号未开通此项功能。\r\n我们支持绑定自定义域名无限流量无IP/Referer访问限制。\r\n支持播放视频/播放音频/预览图片/文件下载等应用场景。\r\n联系我们，开启此项专用功能。\r\nhttps://您的域名.com/download/123/abc/music.mp3",
 					icon: "warning",
 					buttons: ["取消","查看"],
 					dangerMode: true,
