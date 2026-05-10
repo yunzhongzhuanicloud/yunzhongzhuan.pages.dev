@@ -10969,7 +10969,7 @@ function query_all_files_sum_size(){
 
 function preview_media(TheURL){
 	console.log(TheURL);
-	let onlyText = "\r\n预览链接有效时间为24小时，未经授权的IP/域名Referer引用将被拒绝，联系我们升级或绑定自定义域名即可使用永久有效文件链接，无限流量无IP限制无Referer限制无视DDoS/CC攻击。";
+	let onlyText = "\r\n免费账号预览链接有效时间为24小时，只允许您当前IP访问下载，未经授权的IP/域名Referer引用将被拒绝，联系我们升级账号或绑定自定义域名即可使用永久有效文件链接，无限流量无IP/Referer限制，无视一切DDoS/CC攻击。";
 	if(
 		userinfo["public_link"]
 		||
