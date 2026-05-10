@@ -4327,7 +4327,7 @@ function createFileItem(item){
 		}*/
 		
 		let html_element = document.createElement('div');
-		html_element.innerHTML = "<p style=\"display:none;\"><a href='" + download_web_url + this.parent.url + "' target='_blank'>电信下载（稳定）</a></p><p><a style=\"    color:#ff5050;border-bottom:2px dashed #ff5050;font-weight:bold;\" href='javascript:preview_media(\"" + this.parent.ftp + "\")' >预览文件</a></p><p><a style=\"     color:#ff8400;border-bottom:2px dashed #ff8400;font-weight:bold;\" href='" + this.parent.ftp.split('?')[0] + "?download' target='_blank'>下载文件</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://a.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://b.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://c.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://d.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://e.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://f.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://g.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://h.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://i.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://j.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.a.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.b.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.c.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.d.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.e.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.f.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.g.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.h.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.i.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.j.download.yunzhongzhuan.com" + this.parent.url + "' target='_blank'>点击下载 IPv6</a></p>";
+		html_element.innerHTML = "<p style=\"display:none;\"><a href='" + download_web_url + this.parent.url + "' target='_blank'>电信下载（稳定）</a></p><p><a style=\"    color:#ff5050;border-bottom:2px dashed #ff5050;font-weight:bold;\" href='javascript:preview_media(\"" + this.parent.ftp + "\")' >预览文件</a></p><p><a style=\"     color:#ff8400;border-bottom:2px dashed #ff8400;font-weight:bold;\" href='" + this.parent.ftp.split('?')[0] + "?download' target='_blank'>下载文件</a></p>";
 		
 		
 		if(this.parent.url_localhost!=undefined){
@@ -5139,7 +5139,7 @@ files_main.oncontextmenu=function(e){
 			}*/
 			
 			let html_element = document.createElement('div');
-			html_element.innerHTML = "<p style=\"display:none;\"><a href='" + download_web_url + files_items_selected_array[0].url + "' target='_blank'>电信下载（稳定）</a></p><p><a style=\" color:#ff5050;border-bottom:2px dashed #ff5050;font-weight:bold;\" href='javascript:preview_media(\"" + files_items_selected_array[0].ftp + "\")' >预览文件</a></p><p><a style=\"    color:#ff8400;border-bottom:2px dashed #ff8400;font-weight:bold;\" href='" + files_items_selected_array[0].ftp.split('?')[0] + "?download' target='_blank'>下载文件</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://a.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://b.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://c.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://d.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://e.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://f.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://g.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://h.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://i.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://j.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.a.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.b.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.c.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.d.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.e.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.f.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.g.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.h.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.i.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p><p class=\"element-hide-display-none\"><a style=\"color:#0051c3;border-bottom:2px dashed #0051c3;font-weight:bold;\" href='https://ipv6.j.download.yunzhongzhuan.com" + files_items_selected_array[0].url + "' target='_blank'>点击下载 IPv6</a></p>";
+			html_element.innerHTML = "<p style=\"display:none;\"><a href='" + download_web_url + files_items_selected_array[0].url + "' target='_blank'>电信下载（稳定）</a></p><p><a style=\" color:#ff5050;border-bottom:2px dashed #ff5050;font-weight:bold;\" href='javascript:preview_media(\"" + files_items_selected_array[0].ftp + "\")' >预览文件</a></p><p><a style=\"    color:#ff8400;border-bottom:2px dashed #ff8400;font-weight:bold;\" href='" + files_items_selected_array[0].ftp.split('?')[0] + "?download' target='_blank'>下载文件</a></p>";
 			
 			if(files_items_selected_array[0].url_localhost!=undefined){
 				let p = document.createElement('p');
@@ -8264,89 +8264,6 @@ function get_sharefile(id,key){
 					sharefile_content_link_item_download_button_99.style.borderBottom="2px dashed #ff8400";
 
 				
-					sharefile_content_link_item_download_button_20.href = "https://a.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_20.style.color="#0051c3";
-					sharefile_content_link_item_download_button_20.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_20.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_21.href = "https://b.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_21.style.color="#0051c3";
-					sharefile_content_link_item_download_button_21.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_21.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_22.href = "https://c.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_22.style.color="#0051c3";
-					sharefile_content_link_item_download_button_22.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_22.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_23.href = "https://d.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_23.style.color="#0051c3";
-					sharefile_content_link_item_download_button_23.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_23.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_24.href = "https://e.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_24.style.color="#0051c3";
-					sharefile_content_link_item_download_button_24.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_24.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_25.href = "https://f.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_25.style.color="#0051c3";
-					sharefile_content_link_item_download_button_25.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_25.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_26.href = "https://g.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_26.style.color="#0051c3";
-					sharefile_content_link_item_download_button_26.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_26.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_27.href = "https://h.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_27.style.color="#0051c3";
-					sharefile_content_link_item_download_button_27.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_27.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_28.href = "https://i.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_28.style.color="#0051c3";
-					sharefile_content_link_item_download_button_28.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_28.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_29.href = "https://j.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_29.style.color="#0051c3";
-					sharefile_content_link_item_download_button_29.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_29.style.borderBottom="2px dashed #0051c3";
-				
-				
-
-					sharefile_content_link_item_download_button_30.href = "https://ipv6.a.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_30.style.color="#0051c3";
-					sharefile_content_link_item_download_button_30.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_30.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_31.href = "https://ipv6.b.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_31.style.color="#0051c3";
-					sharefile_content_link_item_download_button_31.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_31.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_32.href = "https://ipv6.c.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_32.style.color="#0051c3";
-					sharefile_content_link_item_download_button_32.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_32.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_33.href = "https://ipv6.d.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_33.style.color="#0051c3";
-					sharefile_content_link_item_download_button_33.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_33.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_34.href = "https://ipv6.e.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_34.style.color="#0051c3";
-					sharefile_content_link_item_download_button_34.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_34.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_35.href = "https://ipv6.f.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_35.style.color="#0051c3";
-					sharefile_content_link_item_download_button_35.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_35.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_36.href = "https://ipv6.g.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_36.style.color="#0051c3";
-					sharefile_content_link_item_download_button_36.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_36.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_37.href = "https://ipv6.h.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_37.style.color="#0051c3";
-					sharefile_content_link_item_download_button_37.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_37.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_38.href = "https://ipv6.i.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_38.style.color="#0051c3";
-					sharefile_content_link_item_download_button_38.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_38.style.borderBottom="2px dashed #0051c3";
-					sharefile_content_link_item_download_button_39.href = "https://ipv6.j.download.yunzhongzhuan.com" + ResultJSON["url"];
-					sharefile_content_link_item_download_button_39.style.color="#0051c3";
-					sharefile_content_link_item_download_button_39.style.fontWeight="bold";
-					sharefile_content_link_item_download_button_39.style.borderBottom="2px dashed #0051c3";
 				
 
 				
