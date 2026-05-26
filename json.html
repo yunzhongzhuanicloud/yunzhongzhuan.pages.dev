@@ -1,112 +1,656 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Formatter and Compressor</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON / JSONC Formatter</title>
+
     <style>
+        :root {
+            --bg: #0f1115;
+            --card: #1b1f27;
+            --text: #e6e6e6;
+            --border: #333;
+            --textarea: #11151c;
+            --button: #2b3240;
+            --button-hover: #3a4355;
+            --success: #4caf50;
+            --error: #ff6b6b;
+        }
+
+        body.light {
+            --bg: #f0f0f0;
+            --card: #ffffff;
+            --text: #222;
+            --border: #dcdcdc;
+            --textarea: #ffffff;
+            --button: #e5e5e5;
+            --button-hover: #d5d5d5;
+            --success: #2e7d32;
+            --error: #d32f2f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.2s;
         }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         h1 {
-            color: #333;
+            margin: 0;
+            font-size: 28px;
         }
+
         textarea {
             width: 100%;
-            height: 150px;
-            margin-bottom: 10px;
-            padding: 10px;
-            font-family: monospace;
+            height: 420px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--textarea);
+            color: var(--text);
+            font-family: Consolas, monospace;
             font-size: 14px;
+            resize: vertical;
+            outline: none;
+            line-height: 1.6;
         }
-        pre {
-            background-color: #fff;
-            padding: 10px;
-            border: 1px solid #ddd;
-            overflow-x: auto;
+
+        .buttons {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .error {
-            color: red;
-        }
+
         button {
-            margin-right: 10px;
-            padding: 10px 20px;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            background: var(--button);
+            color: var(--text);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: var(--button-hover);
+        }
+
+        pre {
+            margin-top: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.6;
+        }
+
+        .error {
+            color: var(--error);
+            margin-top: 15px;
+        }
+
+        .success {
+            color: var(--success);
+            margin-top: 15px;
         }
     </style>
 </head>
+
 <body>
-    <h1>JSON Formatter and Compressor</h1>
-    <textarea id="jsonInput" placeholder="Paste your JSON here..."></textarea>
-    <br>
-    <button onclick="formatJSON()">Format JSON</button>
-    <button onclick="compressJSON()">Compress JSON</button>
-    <button onclick="copyResult()">Copy Result</button>
-    <div id="result"></div>
+    <div class="container">
+
+        <div class="topbar">
+            <h1>JSON / JSONC Formatter</h1>
+
+            <button onclick="toggleTheme()">
+                切换主题
+            </button>
+        </div>
+
+        <textarea id="jsonInput" placeholder="支持 JSON / JSONC（注释、尾随逗号）"></textarea>
+
+        <div class="buttons">
+            <button onclick="formatJSON()">
+                格式化（保留注释）
+            </button>
+
+            <button onclick="compressJSON()">
+                压缩（删除注释）
+            </button>
+
+            <button onclick="copyResult()">
+                复制结果
+            </button>
+
+            <button onclick="clearAll()">
+                清空
+            </button>
+        </div>
+
+        <div id="result"></div>
+
+    </div>
 
     <script>
-        function formatJSON() {
-            const input = document.getElementById('jsonInput').value;
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '';
-            try {
-                const json = JSON.parse(input);
-                const formatted = JSON.stringify(json, null, 4);
-                const pre = document.createElement('pre');
-                pre.textContent = formatted;
-                pre.id = 'formattedResult';
-                resultDiv.appendChild(pre);
-            } catch (e) {
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error';
-                errorDiv.textContent = 'Invalid JSON: ' + e.message;
-                resultDiv.appendChild(errorDiv);
+
+        // =========================================
+        // Theme
+        // =========================================
+
+        const THEME_KEY = "json_theme";
+
+        function applyTheme(theme) {
+            if (theme === "light") {
+                document.body.classList.add("light");
+            } else {
+                document.body.classList.remove("light");
             }
         }
+
+        function toggleTheme() {
+            const isLight = document.body.classList.contains("light");
+
+            const next = isLight ? "dark" : "light";
+
+            applyTheme(next);
+
+            localStorage.setItem(THEME_KEY, next);
+        }
+
+        applyTheme(
+            localStorage.getItem(THEME_KEY) || "dark"
+        );
+
+        // =========================================
+        // Strip Comments
+        // 安全删除注释
+        // =========================================
+
+        function stripJsonComments(input) {
+
+            let output = '';
+
+            let inString = false;
+            let inSingleLineComment = false;
+            let inMultiLineComment = false;
+            let escaped = false;
+
+            for (let i = 0; i < input.length; i++) {
+
+                const current = input[i];
+                const next = input[i + 1];
+
+                // 单行注释
+                if (inSingleLineComment) {
+
+                    if (current === '\n') {
+                        inSingleLineComment = false;
+                        output += '\n';
+                    }
+
+                    continue;
+                }
+
+                // 多行注释
+                if (inMultiLineComment) {
+
+                    if (current === '*' && next === '/') {
+                        inMultiLineComment = false;
+                        i++;
+                    }
+
+                    continue;
+                }
+
+                // 字符串内部
+                if (inString) {
+
+                    output += current;
+
+                    if (current === '"' && !escaped) {
+                        inString = false;
+                    }
+
+                    escaped =
+                        current === '\\' && !escaped;
+
+                    continue;
+                }
+
+                // 字符串开始
+                if (current === '"') {
+                    inString = true;
+                    output += current;
+                    continue;
+                }
+
+                // //
+                if (current === '/' && next === '/') {
+                    inSingleLineComment = true;
+                    i++;
+                    continue;
+                }
+
+                // /*
+                if (current === '/' && next === '*') {
+                    inMultiLineComment = true;
+                    i++;
+                    continue;
+                }
+
+                output += current;
+            }
+
+            return output;
+        }
+
+        // =========================================
+        // Remove Trailing Commas
+        // 智能删除对象/数组尾随逗号
+        // =========================================
+
+        function removeTrailingCommas(input) {
+
+            let output = '';
+
+            let inString = false;
+            let escaped = false;
+
+            for (let i = 0; i < input.length; i++) {
+
+                const current = input[i];
+
+                // 字符串内部
+                if (inString) {
+
+                    output += current;
+
+                    if (current === '"' && !escaped) {
+                        inString = false;
+                    }
+
+                    escaped =
+                        current === '\\' && !escaped;
+
+                    continue;
+                }
+
+                // 字符串开始
+                if (current === '"') {
+                    inString = true;
+                    output += current;
+                    continue;
+                }
+
+                // 检查逗号
+                if (current === ',') {
+
+                    let j = i + 1;
+
+                    // 跳过空白
+                    while (
+                        j < input.length &&
+                        /\s/.test(input[j])
+                    ) {
+                        j++;
+                    }
+
+                    // 如果后面是 } 或 ]
+                    // 说明是尾随逗号
+                    if (
+                        input[j] === '}' ||
+                        input[j] === ']'
+                    ) {
+                        continue;
+                    }
+                }
+
+                output += current;
+            }
+
+            return output;
+        }
+
+        // =========================================
+        // Pretty Format (保留注释)
+        // =========================================
+
+        function prettyFormat(text) {
+
+            let result = '';
+
+            let indent = 0;
+
+            let inString = false;
+            let escaped = false;
+
+            for (let i = 0; i < text.length; i++) {
+
+                const char = text[i];
+                const next = text[i + 1];
+
+                // 字符串
+                if (inString) {
+
+                    result += char;
+
+                    if (char === '"' && !escaped) {
+                        inString = false;
+                    }
+
+                    escaped =
+                        char === '\\' && !escaped;
+
+                    continue;
+                }
+
+                // 字符串开始
+                if (char === '"') {
+                    inString = true;
+                    result += char;
+                    continue;
+                }
+
+                // 单行注释
+                if (char === '/' && next === '/') {
+
+                    result += '\n' +
+                        '    '.repeat(indent);
+
+                    while (
+                        i < text.length &&
+                        text[i] !== '\n'
+                    ) {
+                        result += text[i];
+                        i++;
+                    }
+
+                    result += '\n' +
+                        '    '.repeat(indent);
+
+                    continue;
+                }
+
+                // 多行注释
+                if (char === '/' && next === '*') {
+
+                    result += '\n' +
+                        '    '.repeat(indent);
+
+                    while (
+                        i < text.length &&
+                        !(text[i] === '*' &&
+                          text[i + 1] === '/')
+                    ) {
+                        result += text[i];
+                        i++;
+                    }
+
+                    result += '*/';
+                    i++;
+
+                    result += '\n' +
+                        '    '.repeat(indent);
+
+                    continue;
+                }
+
+                switch (char) {
+
+                    case '{':
+                    case '[':
+
+                        result += char + '\n';
+
+                        indent++;
+
+                        result +=
+                            '    '.repeat(indent);
+
+                        break;
+
+                    case '}':
+                    case ']':
+
+                        result += '\n';
+
+                        indent--;
+
+                        result +=
+                            '    '.repeat(indent) + char;
+
+                        break;
+
+                    case ',':
+
+                        result += char + '\n' +
+                            '    '.repeat(indent);
+
+                        break;
+
+                    case ':':
+
+                        result += ': ';
+
+                        break;
+
+                    default:
+
+                        if (!/\s/.test(char)) {
+                            result += char;
+                        }
+                }
+            }
+
+            return result.trim();
+        }
+
+        // =========================================
+        // Validate JSONC
+        // =========================================
+
+        function validateJsonc(text) {
+
+            const clean =
+                removeTrailingCommas(
+                    stripJsonComments(text)
+                );
+
+            return JSON.parse(clean);
+        }
+
+        // =========================================
+        // Format
+        // =========================================
+
+        function formatJSON() {
+
+            const input =
+                document.getElementById(
+                    'jsonInput'
+                ).value;
+
+            try {
+
+                validateJsonc(input);
+
+                const formatted =
+                    prettyFormat(input);
+
+                showResult(
+                    formatted,
+                    'formattedResult'
+                );
+
+            } catch (e) {
+
+                showError(
+                    'Invalid JSON: ' + e.message
+                );
+            }
+        }
+
+        // =========================================
+        // Compress
+        // =========================================
 
         function compressJSON() {
-            const input = document.getElementById('jsonInput').value;
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '';
+
+            const input =
+                document.getElementById(
+                    'jsonInput'
+                ).value;
+
             try {
-                const json = JSON.parse(input);
-                const compressed = JSON.stringify(json);
-                const pre = document.createElement('pre');
-                pre.textContent = compressed;
-                pre.id = 'compressedResult';
-                resultDiv.appendChild(pre);
+
+                const clean =
+                    removeTrailingCommas(
+                        stripJsonComments(input)
+                    );
+
+                const json = JSON.parse(clean);
+
+                const compressed =
+                    JSON.stringify(json);
+
+                showResult(
+                    compressed,
+                    'compressedResult'
+                );
+
             } catch (e) {
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error';
-                errorDiv.textContent = 'Invalid JSON: ' + e.message;
-                resultDiv.appendChild(errorDiv);
+
+                showError(
+                    'Invalid JSON: ' + e.message
+                );
             }
         }
 
-        function copyResult() {
-            const resultDiv = document.getElementById('result');
-            const pre = resultDiv.querySelector('pre');
-            if (pre) {
-                const range = document.createRange();
-                range.selectNode(pre);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                try {
-                    document.execCommand('copy');
-                    // alert('Result copied to clipboard!');
-                    console.log('Result copied to clipboard!');
-                } catch (err) {
-                    // alert('Failed to copy result.');
-                    console.log('Failed to copy result.');
-                }
-                window.getSelection().removeAllRanges();
-            } else {
-                // alert('No result to copy.');
-                console.log('No result to copy.');
+        // =========================================
+        // Result
+        // =========================================
+
+        function showResult(text, id) {
+
+            const result =
+                document.getElementById(
+                    'result'
+                );
+
+            result.innerHTML = '';
+
+            const pre =
+                document.createElement('pre');
+
+            pre.id = id;
+
+            pre.textContent = text;
+
+            result.appendChild(pre);
+        }
+
+        function showError(msg) {
+
+            const result =
+                document.getElementById(
+                    'result'
+                );
+
+            result.innerHTML =
+                `<div class="error">${msg}</div>`;
+        }
+
+        function showSuccess(msg) {
+
+            const result =
+                document.getElementById(
+                    'result'
+                );
+
+            const div =
+                document.createElement('div');
+
+            div.className = 'success';
+
+            div.textContent = msg;
+
+            result.appendChild(div);
+        }
+
+        // =========================================
+        // Copy
+        // =========================================
+
+        async function copyResult() {
+
+            const pre =
+                document.querySelector(
+                    '#result pre'
+                );
+
+            if (!pre) {
+                return;
+            }
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    pre.textContent
+                );
+
+                showSuccess(
+                    '复制成功'
+                );
+
+            } catch (e) {
+
+                showError(
+                    '复制失败'
+                );
             }
         }
+
+        // =========================================
+        // Clear
+        // =========================================
+
+        function clearAll() {
+
+            document.getElementById(
+                'jsonInput'
+            ).value = '';
+
+            document.getElementById(
+                'result'
+            ).innerHTML = '';
+        }
+
     </script>
 </body>
 </html>
