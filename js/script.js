@@ -6,7 +6,7 @@ window.innerHeight
 
 */
 
-
+alert("2026-06-02_00:00:01 系统正在维护 预计 2026-06-04_20:00:00 结束维护");
 
 function getIPSync() {
   try {
