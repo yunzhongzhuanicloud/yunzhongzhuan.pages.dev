@@ -6,7 +6,7 @@ window.innerHeight
 
 */
 
-alert("2026-06-05_00:00:01 系统正在维护 期间请不要上传文件 Don't upload your files, The system is being upgraded. ");
+
 
 function getIPSync() {
   try {
