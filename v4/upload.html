@@ -6,6 +6,7 @@
 <body>
 <script type="text/javascript">
 // 代码而已 能运行就行了 别管那么多
+// update 1
 document.domain="yunzhongzhuan.com";
 let setSessidTimes = 0;
 let setSessidMaxTimes = 100;
@@ -121,10 +122,12 @@ function FileUploadStart(fb,so){
 			xhr.setRequestHeader("folderOf", so.parent_folder_id);
 
 	            	//xhr.setRequestHeader("Content-Range", "bytes " + (""+(sendOK*LENGTH)) +"-"+ fb.size + "/" +  fb.size  ) ;
-	            	xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ fb.size   ) ;
+	            	//xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ fb.size   ) ;
+					xhr.setRequestHeader("Content-Range",  ''   ) ;
 	            }else{
 	            	//xhr.setRequestHeader("Content-Range", "bytes " + (""+(sendOK*LENGTH)) +"-"+ (""+((sendOK+1)*LENGTH)) + "/" +  fb.size  ) ;
-	            	xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ (((sendOK+1)*LENGTH)-1)  ) ;
+	            	//xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ (((sendOK+1)*LENGTH)-1)  ) ;
+					xhr.setRequestHeader("Content-Range",  '' ) ;
 	            }
 
 	            //xhr.setRequestHeader("sendOK", sendOK);
