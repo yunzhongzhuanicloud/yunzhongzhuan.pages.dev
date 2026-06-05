@@ -124,10 +124,14 @@ function FileUploadStart(fb,so){
 	            	//xhr.setRequestHeader("Content-Range", "bytes " + (""+(sendOK*LENGTH)) +"-"+ fb.size + "/" +  fb.size  ) ;
 	            	//xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ fb.size   ) ;
 					xhr.setRequestHeader("Content-Range",  ''   ) ;
+					xhr.setRequestHeader("Content-Length",  ''   ) ;
+					
 	            }else{
 	            	//xhr.setRequestHeader("Content-Range", "bytes " + (""+(sendOK*LENGTH)) +"-"+ (""+((sendOK+1)*LENGTH)) + "/" +  fb.size  ) ;
 	            	//xhr.setRequestHeader("Content-Range",  (""+(sendOK*LENGTH)) +"-"+ (((sendOK+1)*LENGTH)-1)  ) ;
 					xhr.setRequestHeader("Content-Range",  '' ) ;
+					xhr.setRequestHeader("Content-Length",  ''   ) ;
+					
 	            }
 
 	            //xhr.setRequestHeader("sendOK", sendOK);
