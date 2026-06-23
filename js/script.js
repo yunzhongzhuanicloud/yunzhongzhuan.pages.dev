@@ -6761,7 +6761,7 @@ let login_input_username = document.getElementById('login-input-username');
 // let api_server_url = "https://23.99.104.226.nip.io";
 // let api_server_url = "https://server.yunzhongzhuan.com.cdn.cloudflare.net";
 // let api_server_url = "https://applicationprogramminginterface.yzzpan.com";
-let api_server_url = window.location.protocol + "//cae45776685ba.cname.frontwize.com"; // REPLACE ALL CTRL+H CTRL + H // c34a02aaeb0d6.cname.frontwize.com
+let api_server_url = window.location.protocol + "//api.yunzhongzhuan.com"; // REPLACE ALL CTRL+H CTRL + H // c34a02aaeb0d6.cname.frontwize.com
 // let api_server_url = "https://yunzhongzhuan.com.huaweicloud.com.5a7567ec.cdnhwc8.cn";
 // let api_server_url = "https://hcdnw103.c.cdnhwc2.com";
 if(navigator.language.toLowerCase().indexOf('cn')==-1){
@@ -7129,7 +7129,7 @@ function show_verify_code(){
 	}
 	
 	let html_element = document.createElement('div');
-	let verify_img_url = 'https://cae45776685ba.cname.frontwize.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
+	let verify_img_url = 'https://api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
 	// html_element.innerHTML = '<img class="verify-pass-img" src="https://gimg2.baidu.com/gimg/app=2011&src='+ encodeURIComponent(verify_img_url) + '"/><br/><br/><input placeholder="请输入图片中12位验证文字！" autocomplete="off" class="swal-content__input verify-pass-input">';
 	html_element.innerHTML = '<img class="verify-pass-img" src="'+ verify_img_url + '"/><br/><br/><input placeholder="请输入图片中12位验证文字！" autocomplete="off" class="swal-content__input verify-pass-input">';
 	if( false && navigator.language.toLowerCase().indexOf('cn')==-1){
@@ -7217,8 +7217,8 @@ function show_verify_code(){
 				// this.src = window.location.protocol+'//api.yunzhongzhuan.com/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
 				// api.yunzhongzhuan.com
 			}else{
-				// this.src = "https://gimg2.baidu.com/gimg/app=2011&src=" + encodeURIComponent('https://cae45776685ba.cname.frontwize.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime());
-				this.src = 'https://cae45776685ba.cname.frontwize.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
+				// this.src = "https://gimg2.baidu.com/gimg/app=2011&src=" + encodeURIComponent('https://api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime());
+				this.src = 'https://api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
 			}
 		}
 	}
@@ -10675,8 +10675,8 @@ login_input_button_qq_login.onclick = async function(){
 	let text = '手机QQ扫描二维码安全登录。\r\n5秒钟后系统自动更新二维码。\r\n登录地点：广东省深圳市（数据中心）';
 	// let qr_code = 'https://applicationprogramminginterface.yzzpan.com' + '/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";;
 	// let qr_code = api_server_url + '/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";;
-	// let qr_code = "https://gimg2.baidu.com/gimg/app=2011&src="+encodeURIComponent('https://cae45776685ba.cname.frontwize.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&");;
-	let qr_code = 'https://cae45776685ba.cname.frontwize.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";
+	// let qr_code = "https://gimg2.baidu.com/gimg/app=2011&src="+encodeURIComponent('https://api.yunzhongzhuan.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&");;
+	let qr_code = 'https://api.yunzhongzhuan.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";
 	let swal_element = document.getElementsByClassName('swal-overlay--show-modal');
 	let qq_login_id_qr_code_element = document.getElementsByClassName('qq_login_id_qr_code');
 	if(swal_element.length>0 && qq_login_id_qr_code_element.length>0){
