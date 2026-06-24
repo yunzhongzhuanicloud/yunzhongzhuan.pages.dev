@@ -33,7 +33,7 @@ let session_id = get_cookie("PHPSESSID");
 
 function DoLoginFunction(){
 
-	let TheAPIURL = "https://api.yunzhongzhuan.com/php/v4/oauth_github";
+	let TheAPIURL = "https://example-new-api.yunzhongzhuan.com/php/v4/oauth_github";
 
 	let xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
