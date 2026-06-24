@@ -6761,12 +6761,12 @@ let login_input_username = document.getElementById('login-input-username');
 // let api_server_url = "https://23.99.104.226.nip.io";
 // let api_server_url = "https://server.yunzhongzhuan.com.cdn.cloudflare.net";
 // let api_server_url = "https://applicationprogramminginterface.yzzpan.com";
-let api_server_url = window.location.protocol + "//api.yunzhongzhuan.com"; // REPLACE ALL CTRL+H CTRL + H // c34a02aaeb0d6.cname.frontwize.com
+let api_server_url = window.location.protocol + "//example-new-api.yunzhongzhuan.com"; // REPLACE ALL CTRL+H CTRL + H // c34a02aaeb0d6.cname.frontwize.com
 // let api_server_url = "https://yunzhongzhuan.com.huaweicloud.com.5a7567ec.cdnhwc8.cn";
 // let api_server_url = "https://hcdnw103.c.cdnhwc2.com";
 if(navigator.language.toLowerCase().indexOf('cn')==-1){
 	api_server_url = window.location.protocol + "//apiyunzhongzhuancom.vercel.app";
-	// api_server_url = window.location.protocol + "//api.yunzhongzhuan.com"; // api.yunzhongzhuan.com
+	// api_server_url = window.location.protocol + "//example-new-api.yunzhongzhuan.com"; // example-new-api.yunzhongzhuan.com
 	// api_server_url = window.location.protocol + "//mfm.yunzhongzhuan.com";
 }
 // let api_server_url = "https://ddos-guard-net-apiyunzhongzhuancom.vercel.app";
@@ -7129,13 +7129,13 @@ function show_verify_code(){
 	}
 	
 	let html_element = document.createElement('div');
-	let verify_img_url = 'https://api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
+	let verify_img_url = 'https://example-new-api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
 	// html_element.innerHTML = '<img class="verify-pass-img" src="https://gimg2.baidu.com/gimg/app=2011&src='+ encodeURIComponent(verify_img_url) + '"/><br/><br/><input placeholder="请输入图片中12位验证文字！" autocomplete="off" class="swal-content__input verify-pass-input">';
 	html_element.innerHTML = '<img class="verify-pass-img" src="'+ verify_img_url + '"/><br/><br/><input placeholder="请输入图片中12位验证文字！" autocomplete="off" class="swal-content__input verify-pass-input">';
 	if( false && navigator.language.toLowerCase().indexOf('cn')==-1){
 		let new_src = html_element.getElementsByClassName('verify-pass-img')[0].src.replace(/verify_code.php/g,'verify_code');
 		new_src = new_src.replace(api_server_url,'https://apiyunzhongzhuancom.vercel.app');
-		// new_src = new_src.replace(api_server_url,window.location.protocol+'//api.yunzhongzhuan.com');//api.yunzhongzhuan.com
+		// new_src = new_src.replace(api_server_url,window.location.protocol+'//example-new-api.yunzhongzhuan.com');//example-new-api.yunzhongzhuan.com
 		html_element.getElementsByClassName('verify-pass-img')[0].src = new_src;
 	}
 	swal({
@@ -7193,8 +7193,8 @@ function show_verify_code(){
 					}
 					if(navigator.language.toLowerCase().indexOf('cn')==-1){
 						xmlhttp.open("GET","https://apiyunzhongzhuancom.vercel.app/php/v4/verify_code?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
-						// xmlhttp.open("GET",window.location.protocol+"//api.yunzhongzhuan.com/php/v4/verify_code?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
-						// api.yunzhongzhuan.com
+						// xmlhttp.open("GET",window.location.protocol+"//example-new-api.yunzhongzhuan.com/php/v4/verify_code?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
+						// example-new-api.yunzhongzhuan.com
 					}else{
 						xmlhttp.open("GET",api_server_url+"/php/v4/verify_code.php?session_id="+userinfo["session_id"]+"&submit_verify_code="+verify_pass_input_value+"&t="+new Date().getTime(),true);
 					}
@@ -7214,11 +7214,11 @@ function show_verify_code(){
 		verify_pass_img.onclick = function(){
 			if( false && navigator.language.toLowerCase().indexOf('cn')==-1){
 				this.src = 'https://apiyunzhongzhuancom.vercel.app/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
-				// this.src = window.location.protocol+'//api.yunzhongzhuan.com/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
-				// api.yunzhongzhuan.com
+				// this.src = window.location.protocol+'//example-new-api.yunzhongzhuan.com/php/v4/verify_code?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
+				// example-new-api.yunzhongzhuan.com
 			}else{
-				// this.src = "https://gimg2.baidu.com/gimg/app=2011&src=" + encodeURIComponent('https://api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime());
-				this.src = 'https://api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
+				// this.src = "https://gimg2.baidu.com/gimg/app=2011&src=" + encodeURIComponent('https://example-new-api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime());
+				this.src = 'https://example-new-api.yunzhongzhuan.com/php/v4/verify_code.php?session_id=' + userinfo["session_id"] + '&t=' + new Date().getTime();
 			}
 		}
 	}
@@ -10675,8 +10675,8 @@ login_input_button_qq_login.onclick = async function(){
 	let text = '手机QQ扫描二维码安全登录。\r\n5秒钟后系统自动更新二维码。\r\n登录地点：广东省深圳市（数据中心）';
 	// let qr_code = 'https://applicationprogramminginterface.yzzpan.com' + '/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";;
 	// let qr_code = api_server_url + '/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";;
-	// let qr_code = "https://gimg2.baidu.com/gimg/app=2011&src="+encodeURIComponent('https://api.yunzhongzhuan.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&");;
-	let qr_code = 'https://api.yunzhongzhuan.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";
+	// let qr_code = "https://gimg2.baidu.com/gimg/app=2011&src="+encodeURIComponent('https://example-new-api.yunzhongzhuan.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&");;
+	let qr_code = 'https://example-new-api.yunzhongzhuan.com/php/temp/imgs/' + userinfo["qq_login_id"] + ".png?t=0&";
 	let swal_element = document.getElementsByClassName('swal-overlay--show-modal');
 	let qq_login_id_qr_code_element = document.getElementsByClassName('qq_login_id_qr_code');
 	if(swal_element.length>0 && qq_login_id_qr_code_element.length>0){
