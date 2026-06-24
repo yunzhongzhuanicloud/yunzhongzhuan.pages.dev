@@ -6,7 +6,7 @@ window.innerHeight
 
 */
 
-
+alert('系统正在维护中！');
 
 function getIPSync() {
   try {
