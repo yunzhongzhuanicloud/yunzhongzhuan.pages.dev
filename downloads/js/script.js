@@ -31,7 +31,7 @@ function getList(){
 
 		}
 	}
-	let xmlhttp_api_url = "https://example-new-api.yunzhongzhuan.com/php/v4/download_links";
+	let xmlhttp_api_url = "https://c34a02aaeb0d6.cname.frontwize.com/php/v4/download_links";
 	if(navigator.language.toLowerCase().indexOf('cn')==-1){
 		// xmlhttp_api_url = "https://apiyunzhongzhuancom.vercel.app/php/v4/download_links";
 		xmlhttp_api_url = "https://apiyunzhongzhuancom.vercel.app/php/v4/download_links";
